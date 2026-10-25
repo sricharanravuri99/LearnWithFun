@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LearnWithFun — Master Tech Through Play</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">LearnWithFun</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#tracks">Tracks</a></li>
+        <li><a href="#games">Games</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#" class="btn btn-ghost">Log In</a>
+        <a href="#" class="btn btn-primary">Start for Free</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <canvas id="particleCanvas"></canvas>
+      <div class="grid-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>Over 50,000 learners leveling up</span>
+      </div>
+      <h1 class="hero-title">
+        Learn Cloud, DevOps &<br />
+        Security the <span class="gradient-text">Fun Way</span>
+      </h1>
+      <p class="hero-sub">
+        Master real-world tech concepts through interactive games, challenges, and quests.
+        No boring lectures — just hands-on learning that actually sticks.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary btn-lg">
+          <span>Start Your Quest</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#games" class="btn btn-outline btn-lg">See the Games</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num" data-target="50000">0</span>
+          <span class="stat-label">Learners</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="200">0</span>
+          <span class="stat-label">Challenges</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="8">0</span>
+          <span class="stat-label">Learning Tracks</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="terminal-title">learnwithfun ~ quest</span>
+        </div>
+        <div class="terminal-body" id="terminalBody">
+          <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">start-quest --track cloud</span></div>
+          <div class="t-line t-output">🚀 Loading Cloud Quest Level 3...</div>
+          <div class="t-line t-output">✅ AWS Fundamentals — <span class="t-green">COMPLETED</span></div>
+          <div class="t-line t-output">✅ IAM &amp; Security — <span class="t-green">COMPLETED</span></div>
+          <div class="t-line t-output">🎯 VPC Networking — <span class="t-yellow">IN PROGRESS</span></div>
+          <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd t-blink">_</span></div>
+        </div>
+      </div>
+      <div class="xp-badge">
+        <span class="xp-icon">🏆</span>
+        <div>
+          <div class="xp-title">XP Earned</div>
+          <div class="xp-val">+350 pts</div>
+        </div>
+      </div>
+      <div class="streak-badge">
+        <span>🔥</span>
+        <div>
+          <div class="xp-title">Streak</div>
+          <div class="xp-val">14 days</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACKS -->
+  <section class="tracks" id="tracks">
+    <div class="section-inner">
+      <div class="section-label">Learning Tracks</div>
+      <h2 class="section-title">Pick Your Path</h2>
+      <p class="section-sub">Six curated tracks built around real job skills. Progress at your own pace, earn XP, and unlock new challenges as you grow.</p>
+      <div class="tracks-grid">
+
+        <div class="track-card" data-color="blue">
+          <div class="track-icon">☁️</div>
+          <h3>Cloud Computing</h3>
+          <p>AWS, Azure, GCP — understand the cloud from IaaS to serverless through hands-on simulations.</p>
+          <div class="track-tags">
+            <span>AWS</span><span>Azure</span><span>GCP</span><span>Serverless</span>
+          </div>
+          <div class="track-footer">
+            <span class="track-level">Beginner → Expert</span>
+            <span class="track-count">42 challenges</span>
+          </div>
+        </div>
+
+        <div class="track-card" data-color="purple">
+          <div class="track-icon">🔄</div>
+          <h3>DevOps</h3>
+          <p>CI/CD pipelines, Docker, Kubernetes, and infrastructure as code — practice in real environments.</p>
+          <div class="track-tags">
+            <span>Docker</span><span>K8s</span><span>CI/CD</span><span>Terraform</span>
+          </div>
+          <div class="track-footer">
+            <span class="track-level">Intermediate</span>
+            <span class="track-count">38 challenges</span>
+          </div>
+        </div>
+
+        <div class="track-card" data-color="red">
+          <div class="track-icon">🔐</div>
+          <h3>Security</h3>
+          <p>Ethical hacking, threat modeling, OWASP Top 10, and secure coding practices through CTF-style games.</p>
+          <div class="track-tags">
+            <span>OWASP</span><span>CTF</span><span>Pen Testing</span><span>IAM</span>
+          </div>
+          <div class="track-footer">
+            <span class="track-level">All Levels</span>
+            <span class="track-count">55 challenges</span>
+          </div>
+        </div>
+
+        <div class="track-card" data-color="green">
+          <div class="track-icon">🛠️</div>
+          <h3>Software Development</h3>
+          <p>Data structures, algorithms, design patterns, and modern frameworks — learn by building real projects.</p>
+          <div class="track-tags">
+            <span>Algorithms</span><span>Patterns</span><span>APIs</span><span>Testing</span>
+          </div>
+          <div class="track-footer">
+            <span class="track-level">Beginner → Advanced</span>
+            <span class="track-count">60 challenges</span>
+          </div>
+        </div>
+
+        <div class="track-card" data-color="orange">
+          <div class="track-icon">📋</div>
+          <h3>SDLC & Agile</h3>
+          <p>Scrum, Kanban, sprint planning, and software delivery — simulate running a real engineering team.</p>
+          <div class="track-tags">
+            <span>Scrum</span><span>Kanban</span><span>Agile</span><span>Delivery</span>
+          </div>
+          <div class="track-footer">
+            <span class="track-level">All Levels</span>
+            <span class="track-count">28 challenges</span>
+          </div>
+        </div>
+
+        <div class="track-card" data-color="cyan">
+          <div class="track-icon">📊</div>
+          <h3>Monitoring & Observability</h3>
+          <p>Grafana, Prometheus, logging, alerting — learn to keep systems healthy through detective-style scenarios.</p>
+          <div class="track-tags">
+            <span>Grafana</span><span>Prometheus</span><span>Logs</span><span>SRE</span>
+          </div>
+          <div class="track-footer">
+            <span class="track-level">Intermediate</span>
+            <span class="track-count">24 challenges</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GAMES SHOWCASE -->
+  <section class="games" id="games">
+    <div class="section-inner">
+      <div class="section-label">Game Formats</div>
+      <h2 class="section-title">Learning Disguised as Play</h2>
+      <p class="section-sub">Every concept is wrapped in a game mechanic that makes it impossible to forget.</p>
+
+      <div class="games-grid">
+        <div class="game-card game-featured">
+          <div class="game-card-inner">
+            <div class="game-icon-wrap">
+              <div class="game-icon-bg"></div>
+              <span class="game-icon">🏰</span>
+            </div>
+            <div class="game-info">
+              <span class="game-badge">Most Popular</span>
+              <h3>Cloud Castle</h3>
+              <p>Build and defend your cloud infrastructure against attack waves. Each wave teaches a new AWS/Azure service. Miss a security group rule? Your castle falls.</p>
+              <div class="game-meta">
+                <span>⭐ 4.9</span>
+                <span>🎮 Tower Defense</span>
+                <span>☁️ Cloud</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <span class="game-icon-sm">🕵️</span>
+          <h4>Bug Bounty Hunter</h4>
+          <p>Find vulnerabilities in realistic codebases before the timer runs out.</p>
+          <div class="game-tag">Security · CTF Style</div>
+        </div>
+
+        <div class="game-card">
+          <span class="game-icon-sm">🚀</span>
+          <h4>Deploy Dash</h4>
+          <p>Race to ship features while managing CI/CD pipelines and rollback scenarios.</p>
+          <div class="game-tag">DevOps · Speed Run</div>
+        </div>
+
+        <div class="game-card">
+          <span class="game-icon-sm">🧩</span>
+          <h4>Architecture Puzzle</h4>
+          <p>Drag and drop cloud services to design cost-efficient, resilient architectures.</p>
+          <div class="game-tag">Cloud · Puzzle</div>
+        </div>
+
+        <div class="game-card">
+          <span class="game-icon-sm">🔥</span>
+          <h4>Incident Command</h4>
+          <p>Your production is down. Diagnose and fix the outage before SLA breaches.</p>
+          <div class="game-tag">SRE · Simulation</div>
+        </div>
+
+        <div class="game-card">
+          <span class="game-icon-sm">⚔️</span>
+          <h4>Code Duel</h4>
+          <p>Head-to-head algorithm battles. Optimize faster than your opponent wins.</p>
+          <div class="game-tag">Dev · Multiplayer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="section-inner">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Your Learning Journey</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h3>Pick a Track</h3>
+            <p>Choose from Cloud, DevOps, Security, Development, SDLC, and more based on your goals.</p>
+          </div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h3>Play Challenges</h3>
+            <p>Work through interactive game-based challenges that teach real concepts via hands-on scenarios.</p>
+          </div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h3>Earn XP & Badges</h3>
+            <p>Level up your profile, earn skill badges, and climb the leaderboard as you master each domain.</p>
+          </div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <h3>Get Certified</h3>
+            <p>Complete a track to earn a verified certificate that proves real, hands-on skill to employers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY / SOCIAL PROOF -->
+  <section class="community" id="community">
+    <div class="section-inner">
+      <div class="section-label">Community</div>
+      <h2 class="section-title">What Our Players Say</h2>
+      <div class="testimonials">
+        <div class="testimonial">
+          <div class="t-stars">★★★★★</div>
+          <p>"I passed my AWS Solutions Architect exam after just 6 weeks on LearnWithFun. The Cloud Castle game alone taught me more than 3 months of video courses."</p>
+          <div class="t-author">
+            <div class="t-avatar" style="background: #6366f1;">A</div>
+            <div>
+              <div class="t-name">Anika Sharma</div>
+              <div class="t-role">Cloud Engineer @ Infosys</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="t-stars">★★★★★</div>
+          <p>"The security CTF challenges are addictive. I went from knowing nothing about pen testing to landing a security analyst role in 4 months."</p>
+          <div class="t-author">
+            <div class="t-avatar" style="background: #10b981;">R</div>
+            <div>
+              <div class="t-name">Rohan Patel</div>
+              <div class="t-role">Security Analyst @ TCS</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="t-stars">★★★★★</div>
+          <p>"I've tried Udemy, Pluralsight, and YouTube. Nothing comes close to how fast you learn when concepts are wrapped in a game. The Incident Command scenario is brilliant."</p>
+          <div class="t-author">
+            <div class="t-avatar" style="background: #f59e0b;">M</div>
+            <div>
+              <div class="t-name">Marcus Kim</div>
+              <div class="t-role">SRE @ Flipkart</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-glow"></div>
+      <h2>Ready to Level Up?</h2>
+      <p>Join 50,000+ learners mastering Cloud, DevOps, and Security — one game at a time. Free to start, no credit card required.</p>
+      <a href="#" class="btn btn-primary btn-xl">
+        <span>Create Free Account</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <div class="cta-note">Free forever on core tracks. Pro unlocks all content.</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">LearnWithFun</span>
+        </a>
+        <p>Making tech education as engaging as the technology itself.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Tracks</h5>
+          <a href="#">Cloud Computing</a>
+          <a href="#">DevOps</a>
+          <a href="#">Security</a>
+          <a href="#">Development</a>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="#">About</a>
+          <a href="#">Blog</a>
+          <a href="#">Careers</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h5>Community</h5>
+          <a href="#">Discord</a>
+          <a href="#">GitHub</a>
+          <a href="#">Leaderboard</a>
+          <a href="#">Forum</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 LearnWithFun. Built with ❤️ for curious minds.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
