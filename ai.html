@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Mastery Quest — LearnWithFun</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="ai-styles.css" />
+</head>
+<body>
+
+  <nav class="nav scrolled">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">LearnWithFun</span>
+      </a>
+      <div class="nav-track-pill">🧠 AI Mastery Quest</div>
+      <a href="index.html" class="btn btn-ghost">← All Tracks</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="ai-hero">
+    <canvas id="brainCanvas"></canvas>
+    <div class="ai-hero-content">
+      <div class="ai-badge"><span class="badge-dot"></span> 15 Interactive Lessons</div>
+      <h1>AI Mastery Quest</h1>
+      <p>From absolute zero to AI expert — through hands-on interactive games, animated diagrams, and knowledge challenges.</p>
+
+      <div class="player-stats">
+        <div class="stat-card">
+          <span class="stat-icon">⚡</span>
+          <div>
+            <div class="stat-val" id="totalXP">0</div>
+            <div class="stat-lbl">Total XP</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">📚</span>
+          <div>
+            <div class="stat-val" id="completedCount">0 / 15</div>
+            <div class="stat-lbl">Completed</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">🏆</span>
+          <div>
+            <div class="stat-val" id="currentLevel">Beginner</div>
+            <div class="stat-lbl">Rank</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="xp-bar-wrap">
+        <div class="xp-bar"><div class="xp-bar-fill" id="xpFill"></div></div>
+        <div class="xp-bar-labels">
+          <span id="xpCurrent">0 XP</span>
+          <span id="xpMax">1,500 XP to Master</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEVELS -->
+  <section class="ai-levels">
+    <div class="levels-inner">
+
+      <div class="level-tabs">
+        <button class="level-tab active" data-level="beginner">
+          <span>🌱</span> Beginner
+          <span class="tab-badge" id="cntBeginner">0/5</span>
+        </button>
+        <button class="level-tab" data-level="intermediate" id="tabInter">
+          <span>🔥</span> Intermediate
+          <span class="tab-badge" id="cntInter">0/5</span>
+          <span class="tab-lock" id="lockInter">🔒</span>
+        </button>
+        <button class="level-tab" data-level="advanced" id="tabAdv">
+          <span>⚡</span> Advanced
+          <span class="tab-badge" id="cntAdv">0/5</span>
+          <span class="tab-lock" id="lockAdv">🔒</span>
+        </button>
+      </div>
+
+      <div class="level-desc" id="levelDesc">
+        Master the fundamentals — no prior knowledge needed. Start here.
+      </div>
+
+      <div class="lessons-grid" id="lessonsGrid"></div>
+
+    </div>
+  </section>
+
+  <!-- LESSON MODAL -->
+  <div class="lesson-modal hidden" id="lessonModal">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-box" id="modalBox">
+
+      <div class="modal-header">
+        <div class="modal-title-row">
+          <span class="modal-icon" id="modalIcon">🤖</span>
+          <div>
+            <h2 id="modalTitle">Lesson Title</h2>
+            <span class="modal-subtitle" id="modalSubtitle"></span>
+          </div>
+        </div>
+        <div class="modal-header-right">
+          <span class="modal-xp-tag" id="modalXPTag">+50 XP</span>
+          <button class="modal-close" id="modalClose">✕</button>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="content-panel">
+          <p class="lesson-intro" id="lessonIntro"></p>
+          <ul class="lesson-points" id="lessonPoints"></ul>
+          <div class="lesson-funfact" id="lessonFunfact"></div>
+        </div>
+        <div class="diagram-panel">
+          <div class="diagram-label">Interactive Diagram</div>
+          <div class="diagram-area" id="diagramArea"></div>
+        </div>
+      </div>
+
+      <div class="modal-quiz">
+        <div class="quiz-header">
+          <span class="quiz-label">🎯 Knowledge Check — earn XP!</span>
+          <span class="quiz-attempts" id="quizAttempts"></span>
+        </div>
+        <p class="quiz-q" id="quizQ"></p>
+        <div class="quiz-opts" id="quizOpts"></div>
+        <div class="quiz-explanation hidden" id="quizExp"></div>
+        <div class="quiz-footer">
+          <button class="btn btn-primary btn-next hidden" id="btnNext">Next Lesson →</button>
+          <button class="btn btn-ghost btn-close-lesson hidden" id="btnCloseDone">Close ✕</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- XP FLOAT POPUP -->
+  <div class="xp-float hidden" id="xpFloat">+0 XP</div>
+
+  <!-- ACHIEVEMENT POPUP -->
+  <div class="ach-popup hidden" id="achPopup">
+    <div class="ach-inner">
+      <span class="ach-icon" id="achIcon">🏆</span>
+      <div>
+        <div class="ach-label">Achievement Unlocked!</div>
+        <div class="ach-title" id="achTitle">First Steps</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="ai-game.js"></script>
+</body>
+</html>
