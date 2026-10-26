@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevOps Basics — LearnWithFun</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="learn.css" />
+</head>
+<body>
+  <div class="scroll-progress"><div class="scroll-progress-fill" id="spFill"></div></div>
+  <nav class="learn-topnav">
+    <div class="learn-topnav-inner">
+      <a href="index.html" class="learn-back">← Home</a>
+      <span class="learn-track-name">⚙️ DevOps — Basics</span>
+    </div>
+  </nav>
+  <aside class="nav-dots">
+    <a class="nav-dot active" href="#s1" data-idx="0"><span class="dot-label">What is DevOps?</span></a>
+    <a class="nav-dot" href="#s2" data-idx="1"><span class="dot-label">CI/CD Pipeline</span></a>
+    <a class="nav-dot" href="#s3" data-idx="2"><span class="dot-label">Docker</span></a>
+    <a class="nav-dot" href="#s4" data-idx="3"><span class="dot-label">Kubernetes</span></a>
+    <a class="nav-dot" href="#s5" data-idx="4"><span class="dot-label">Infra as Code</span></a>
+  </aside>
+
+  <!-- S1 -->
+  <section class="learn-section" id="s1" data-dot="0" data-accent="green">
+    <div class="s-text anim-in">
+      <div class="s-num">01 / What is DevOps?</div>
+      <h2>Dev + Ops<br>working as<br><span class="accent">one team.</span></h2>
+      <p class="s-lead">DevOps is a culture and set of practices that bring development (building features) and operations (running infrastructure) together. The goal: ship software faster, more reliably, and with fewer incidents.</p>
+      <div class="analogy-box">
+        <span class="analogy-icon">🏗️</span>
+        <p><strong>Analogy:</strong> Old model = architects hand blueprints to builders, who hand buildings to facilities managers — each blames the other when something breaks. DevOps = one cross-functional team owns the whole lifecycle: design → build → deploy → monitor → improve.</p>
+      </div>
+      <div class="key-insight">
+        <span>💡 The three pillars</span>
+        <p><strong>Automation:</strong> Everything that can be scripted, should be. No manual deploys.<br>
+        <strong>Feedback loops:</strong> Errors surface in minutes, not months.<br>
+        <strong>Collaboration:</strong> Shared responsibility for reliability (no blame silos).</p>
+      </div>
+    </div>
+    <div class="s-visual anim-in delay">
+      <div class="visual-label">Old way vs DevOps way</div>
+      <div class="canvas-wrap" id="devopsCompareCanvas" style="min-height:320px"></div>
+    </div>
+  </section>
+
+  <!-- S2 -->
+  <section class="learn-section flip" id="s2" data-dot="1" data-accent="cyan">
+    <div class="s-text anim-in">
+      <div class="s-num">02 / CI/CD Pipeline</div>
+      <h2>Code to<br>production in<br><span class="accent">minutes.</span></h2>
+      <p class="s-lead">CI (Continuous Integration) means every code commit is automatically tested. CD (Continuous Delivery/Deployment) means passing code is automatically deployed. Together they eliminate manual, risky "big bang" releases.</p>
+      <div class="analogy-box">
+        <span class="analogy-icon">🏭</span>
+        <p><strong>Analogy:</strong> A car factory assembly line. Each station (test, build, scan, deploy) does one job and passes the car forward. If any station finds a defect, the line stops and the developer is alerted immediately — not after the car is shipped to a customer.</p>
+      </div>
+      <div class="step-list" id="cicdSteps">
+        <div class="step-item" id="cicd0"><div class="step-badge">1</div><div class="step-text"><h5>Code Commit</h5><p>Developer pushes to Git. This triggers the pipeline automatically.</p></div></div>
+        <div class="step-item" id="cicd1"><div class="step-badge">2</div><div class="step-text"><h5>Build</h5><p>Source code is compiled and dependencies installed.</p></div></div>
+        <div class="step-item" id="cicd2"><div class="step-badge">3</div><div class="step-text"><h5>Test</h5><p>Unit, integration, and e2e tests run in parallel.</p></div></div>
+        <div class="step-item" id="cicd3"><div class="step-badge">4</div><div class="step-text"><h5>Security Scan</h5><p>Static analysis, dependency audit, container scan.</p></div></div>
+        <div class="step-item" id="cicd4"><div class="step-badge">5</div><div class="step-text"><h5>Deploy</h5><p>Artifact pushed to staging, then production (blue/green or canary).</p></div></div>
+      </div>
+    </div>
+    <div class="s-visual anim-in delay">
+      <div class="visual-label">CI/CD pipeline — watch it run</div>
+      <div class="canvas-wrap" id="cicdCanvas" style="min-height:300px"></div>
+      <div class="ctrl-bar" style="margin-top:10px">
+        <button class="btn-learn primary sm" id="cicdRunBtn">▶ Run Pipeline</button>
+        <button class="btn-learn ghost sm" id="cicdResetBtn">↺ Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3 -->
+  <section class="learn-section" id="s3" data-dot="2" data-accent="cyan">
+    <div class="s-text anim-in">
+      <div class="s-num">03 / Docker &amp; Containers</div>
+      <h2>"Works on<br>my machine"<br><span class="accent">— solved.</span></h2>
+      <p class="s-lead">A container packages your app with all its dependencies (libraries, runtime, config) into a single portable unit. It runs identically on your laptop, CI server, or production — because the environment travels with the app.</p>
+      <div class="analogy-box">
+        <span class="analogy-icon">📦</span>
+        <p><strong>Analogy — Shipping container:</strong> Before containers, ports were chaos — every cargo needed different handling. The standard shipping container changed everything: load it once, ship anywhere. Docker containers do the same for software.</p>
+      </div>
+      <div class="key-insight">
+        <span>💡 VM vs Container</span>
+        <p><strong>VMs:</strong> Virtualise entire hardware, each runs its own full OS (gigabytes, minutes to start)<br>
+        <strong>Containers:</strong> Share the host OS kernel, isolate just the app process (megabytes, milliseconds to start)<br>
+        → Containers are 10–100x more resource-efficient.</p>
+      </div>
+    </div>
+    <div class="s-visual anim-in delay">
+      <div class="visual-label">VM vs Container architecture</div>
+      <div class="canvas-wrap" id="dockerCanvas" style="min-height:320px"></div>
+    </div>
+  </section>
+
+  <!-- S4 -->
+  <section class="learn-section flip" id="s4" data-dot="3" data-accent="purple">
+    <div class="s-text anim-in">
+      <div class="s-num">04 / Kubernetes</div>
+      <h2>Orchestrate<br>thousands of<br><span class="accent">containers.</span></h2>
+      <p class="s-lead">Kubernetes (K8s) is a system that automates deployment, scaling, and management of containerised applications. It watches your containers, restarts failed ones, scales based on load, and distributes traffic — automatically.</p>
+      <div class="analogy-box">
+        <span class="analogy-icon">🎼</span>
+        <p><strong>Analogy — Orchestra conductor:</strong> Docker packages musicians (containers). Kubernetes is the conductor — assigns seats, fills in for anyone who leaves, scales the string section when needed, keeps everything in sync, without you micromanaging every musician.</p>
+      </div>
+      <div class="key-insight">
+        <span>💡 Core K8s concepts</span>
+        <p><strong>Pod:</strong> Smallest unit — one or more containers running together.<br>
+        <strong>Deployment:</strong> Declares how many pod replicas you want; K8s maintains that count.<br>
+        <strong>Service:</strong> Stable network endpoint in front of pods (pods come and go, service IP stays).<br>
+        <strong>Node:</strong> Physical/virtual machine that runs pods.</p>
+      </div>
+    </div>
+    <div class="s-visual anim-in delay">
+      <div class="visual-label">Kubernetes cluster — click to fail a pod</div>
+      <div class="canvas-wrap" id="k8sCanvas" style="min-height:320px"></div>
+      <div class="ctrl-bar" style="margin-top:10px">
+        <button class="btn-learn ghost sm" id="k8sResetBtn">↺ Heal all pods</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 -->
+  <section class="learn-section full-center" id="s5" data-dot="4" data-accent="orange">
+    <div class="s-text anim-in" style="text-align:center;max-width:700px;margin:0 auto">
+      <div class="s-num" style="text-align:center">05 / Infrastructure as Code</div>
+      <h2>Your infrastructure<br>in a <span class="accent">Git repository.</span></h2>
+      <p class="s-lead" style="margin:0 auto;max-width:540px">IaC means you describe servers, networks, and databases in config files — not by clicking in a web console. Same code, same infrastructure, every time. Reviewed, versioned, reproducible.</p>
+    </div>
+    <div class="anim-in delay" style="width:100%">
+      <div class="compare-grid cols-3">
+        <div class="compare-card" style="border-color:rgba(124,111,255,0.3)">
+          <div class="cc-icon">🌍</div>
+          <h4>Terraform</h4>
+          <p>Cloud-agnostic. Write once, deploy to AWS, Azure, GCP, or any provider. Most popular IaC tool. Uses HCL language.</p>
+          <div style="margin-top:12px;background:rgba(0,0,0,0.4);padding:10px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:#a78bfa;white-space:pre">resource "aws_instance" "web" {
+  ami = "ami-0c55b31ad"
+  instance_type = "t3.micro"
+}</div>
+        </div>
+        <div class="compare-card" style="border-color:rgba(251,191,36,0.3)">
+          <div class="cc-icon">📜</div>
+          <h4>Ansible</h4>
+          <p>Configuration management. Once your server exists, Ansible installs packages, configs, and software — idempotently (same result if run 10 times).</p>
+          <div style="margin-top:12px;background:rgba(0,0,0,0.4);padding:10px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:#fbbf24;white-space:pre">- name: Install nginx
+  apt:
+    name: nginx
+    state: present</div>
+        </div>
+        <div class="compare-card" style="border-color:rgba(34,211,238,0.3)">
+          <div class="cc-icon">🔥</div>
+          <h4>Pulumi / CDK</h4>
+          <p>Write infrastructure in real programming languages (Python, TypeScript, Go). Loops, functions, and tests work natively. Best for complex, dynamic infra.</p>
+          <div style="margin-top:12px;background:rgba(0,0,0,0.4);padding:10px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:#22d3ee;white-space:pre">const server = new aws.ec2
+  .Instance("web", {
+    instanceType: "t3.micro"
+  });</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="learn-cta">
+    <div class="learn-cta-inner">
+      <h2>DevOps foundations covered.</h2>
+      <p>Continue to Security basics or explore another track.</p>
+      <div class="learn-cta-btns">
+        <a href="learn-security.html" class="btn-learn primary" style="padding:14px 28px;font-size:1rem;border-radius:12px">Next: Security →</a>
+        <a href="index.html" class="btn-learn ghost" style="padding:14px 24px;font-size:1rem;border-radius:12px">← All Tracks</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="learn-footer">
+    <span>LearnWithFun — DevOps Basics</span>
+    <div style="display:flex;gap:20px">
+      <a href="learn-ai.html">AI →</a>
+      <a href="learn-cloud.html">Cloud →</a>
+      <a href="learn-security.html">Security →</a>
+    </div>
+  </footer>
+
+  <script src="learn.js"></script>
+  <script src="learn-devops.js"></script>
+</body>
+</html>
