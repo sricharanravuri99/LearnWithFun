@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Basics — LearnWithFun</title>
+  <title>AI & Machine Learning — LearnWithFun</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -11,316 +11,521 @@
 </head>
 <body>
 
-  <div class="scroll-progress"><div class="scroll-progress-fill" id="spFill"></div></div>
+<div class="scroll-progress"><div class="scroll-progress-fill" id="spFill"></div></div>
 
-  <!-- TOP NAV -->
-  <nav class="learn-topnav">
-    <div class="learn-topnav-inner">
-      <a href="index.html" class="learn-back">← Home</a>
-      <span class="learn-track-name">🧠 AI & Machine Learning — Basics</span>
-      <a href="ai.html" class="learn-quiz-link">Take the Quiz →</a>
-    </div>
-  </nav>
+<nav class="learn-topnav">
+  <div class="learn-topnav-inner">
+    <a href="index.html" class="learn-back">← Home</a>
+    <span class="learn-track-name">🧠 AI & Machine Learning — Complete Guide</span>
+    <a href="ai.html" class="learn-quiz-link">Take the Quiz →</a>
+  </div>
+</nav>
 
-  <!-- SIDE DOTS -->
-  <aside class="nav-dots" id="navDots">
-    <a class="nav-dot active" href="#s1" data-idx="0"><span class="dot-label">What is AI?</span></a>
-    <a class="nav-dot" href="#s2" data-idx="1"><span class="dot-label">The Neuron</span></a>
-    <a class="nav-dot" href="#s3" data-idx="2"><span class="dot-label">Neural Networks</span></a>
-    <a class="nav-dot" href="#s4" data-idx="3"><span class="dot-label">Training Loop</span></a>
-    <a class="nav-dot" href="#s5" data-idx="4"><span class="dot-label">Gradient Descent</span></a>
-    <a class="nav-dot" href="#s6" data-idx="5"><span class="dot-label">Types of ML</span></a>
-    <a class="nav-dot" href="#s7" data-idx="6"><span class="dot-label">Real World AI</span></a>
-  </aside>
+<aside class="nav-dots" id="navDots">
+  <a class="nav-dot active" href="#s1"  data-idx="0"><span class="dot-label">What is AI?</span></a>
+  <a class="nav-dot" href="#s2"  data-idx="1"><span class="dot-label">The Neuron</span></a>
+  <a class="nav-dot" href="#s3"  data-idx="2"><span class="dot-label">Neural Networks</span></a>
+  <a class="nav-dot" href="#s4"  data-idx="3"><span class="dot-label">Training Loop</span></a>
+  <a class="nav-dot" href="#s5"  data-idx="4"><span class="dot-label">Gradient Descent</span></a>
+  <a class="nav-dot" href="#s6"  data-idx="5"><span class="dot-label">Types of ML</span></a>
+  <a class="nav-dot" href="#s7"  data-idx="6"><span class="dot-label">Tokens</span></a>
+  <a class="nav-dot" href="#s8"  data-idx="7"><span class="dot-label">Embeddings</span></a>
+  <a class="nav-dot" href="#s9"  data-idx="8"><span class="dot-label">Transformers</span></a>
+  <a class="nav-dot" href="#s10" data-idx="9"><span class="dot-label">LLMs</span></a>
+  <a class="nav-dot" href="#s11" data-idx="10"><span class="dot-label">Generative AI</span></a>
+  <a class="nav-dot" href="#s12" data-idx="11"><span class="dot-label">Prompt Engineering</span></a>
+  <a class="nav-dot" href="#s13" data-idx="12"><span class="dot-label">AI Agents</span></a>
+  <a class="nav-dot" href="#s14" data-idx="13"><span class="dot-label">Real World AI</span></a>
+</aside>
 
-  <!-- ═══════════════════════════════════════════
-       SECTION 1 — WHAT IS AI?
-       ═══════════════════════════════════════════ -->
-  <section class="learn-section" id="s1" data-dot="0" data-accent="purple">
-    <div class="s-text anim-in">
-      <div class="s-num">01 / What is AI?</div>
-      <h2>AI doesn't follow rules.<br><span class="accent">It discovers them.</span></h2>
-      <p class="s-lead">Traditional software runs on explicit instructions you write. AI flips this: instead of telling it what to do, you show it thousands of examples and it learns the pattern on its own.</p>
-      <div class="analogy-box">
-        <span class="analogy-icon">👶</span>
-        <p><strong>Analogy:</strong> Teaching a child to recognise dogs. You don't write rules like "4 legs AND fur AND tail". You just show 1,000 photos labelled "dog" or "not dog". The child figures out the pattern. AI works the same way.</p>
-      </div>
-      <div class="key-insight">
-        <span>💡 The key shift</span>
-        <p>Traditional code: <code style="color:#22d3ee;font-family:'JetBrains Mono',monospace">IF ears AND fur THEN dog</code><br>
-        Machine Learning: show examples → algorithm discovers the IF-THEN itself.</p>
-      </div>
+<!-- ═══════ S1: WHAT IS AI ═══════ -->
+<section class="learn-section" id="s1" data-dot="0" data-accent="purple">
+  <div class="s-text anim-in">
+    <div class="s-num">01 / What is AI?</div>
+    <h2>AI doesn't follow rules.<br><span class="accent">It discovers them.</span></h2>
+    <p class="s-lead">Traditional software runs on explicit instructions you write. AI flips this: instead of telling it what to do, you show it thousands of examples and it learns the pattern on its own.</p>
+    <div class="analogy-box">
+      <span class="analogy-icon">👶</span>
+      <p><strong>Analogy:</strong> Teaching a child to recognise dogs. You don't write rules like "4 legs AND fur AND tail". You just show 1,000 photos labelled "dog" or "not dog". The child figures out the pattern. AI works the same way.</p>
     </div>
-    <div class="s-visual anim-in delay">
-      <div class="visual-label">Traditional Code vs Machine Learning</div>
-      <div class="canvas-wrap" id="aiCompareCanvas" style="min-height:320px"></div>
+    <div class="key-insight">
+      <span>💡 The key shift</span>
+      <p>Traditional code: <code style="color:#22d3ee;font-family:'JetBrains Mono',monospace">IF ears AND fur THEN dog</code><br>
+      Machine Learning: show examples → algorithm discovers the IF-THEN itself.</p>
     </div>
-  </section>
+  </div>
+  <div class="s-visual anim-in delay">
+    <div class="visual-label">Traditional Code vs Machine Learning</div>
+    <div class="canvas-wrap" id="aiCompareCanvas" style="min-height:320px"></div>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════
-       SECTION 2 — THE NEURON
-       ═══════════════════════════════════════════ -->
-  <section class="learn-section flip" id="s2" data-dot="1" data-accent="cyan">
-    <div class="s-text anim-in">
-      <div class="s-num">02 / The Building Block</div>
-      <h2>One neuron,<br><span class="accent">one decision.</span></h2>
-      <p class="s-lead">Every AI system — from image recognisers to ChatGPT — is built from the same tiny unit: the artificial neuron. It takes inputs, multiplies each by a learnable weight, sums them up, and fires an output.</p>
-      <div class="analogy-box">
-        <span class="analogy-icon">⚖️</span>
-        <p><strong>Analogy:</strong> A judge deciding a verdict. Each piece of evidence (input) has a weight of importance. The judge sums the weighted evidence, and if it crosses a threshold, they rule "guilty" (neuron fires). Weights = the judge's learned experience.</p>
-      </div>
-      <div class="key-insight">
-        <span>💡 The math in plain English</span>
-        <p><strong>Output = Activation( x₁·w₁ + x₂·w₂ + x₃·w₃ + bias )</strong><br>
-        Move the sliders below to see this live.</p>
-      </div>
+<!-- ═══════ S2: THE NEURON ═══════ -->
+<section class="learn-section flip" id="s2" data-dot="1" data-accent="cyan">
+  <div class="s-text anim-in">
+    <div class="s-num">02 / The Building Block</div>
+    <h2>One neuron,<br><span class="accent">one decision.</span></h2>
+    <p class="s-lead">Every AI — from image recognisers to ChatGPT — is built from the same tiny unit: the artificial neuron. It takes inputs, multiplies each by a learnable weight, sums them up, and fires an output.</p>
+    <div class="analogy-box">
+      <span class="analogy-icon">⚖️</span>
+      <p><strong>Analogy:</strong> A judge deciding a verdict. Each piece of evidence (input) has a weight of importance. The judge sums the weighted evidence, and if it crosses a threshold, they rule "guilty" (neuron fires). Weights = the judge's learned experience.</p>
     </div>
-    <div class="s-visual anim-in delay">
-      <div class="visual-label">Interactive Neuron — move the sliders</div>
-      <div class="canvas-wrap" id="neuronCanvas" style="min-height:280px"></div>
-      <div class="controls" id="neuronControls"></div>
+    <div class="key-insight">
+      <span>💡 The math in plain English</span>
+      <p><strong>Output = Activation( x₁·w₁ + x₂·w₂ + x₃·w₃ + bias )</strong><br>Move the sliders to see this live.</p>
     </div>
-  </section>
+  </div>
+  <div class="s-visual anim-in delay">
+    <div class="visual-label">Interactive Neuron — move the sliders</div>
+    <div class="canvas-wrap" id="neuronCanvas" style="min-height:280px"></div>
+    <div class="controls" id="neuronControls"></div>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════
-       SECTION 3 — NEURAL NETWORKS
-       ═══════════════════════════════════════════ -->
-  <section class="learn-section" id="s3" data-dot="2" data-accent="purple">
-    <div class="s-text anim-in">
-      <div class="s-num">03 / Layers of Intelligence</div>
-      <h2>Stack neurons.<br><span class="accent">Get intelligence.</span></h2>
-      <p class="s-lead">One neuron can only detect one simple pattern. But connect them in layers — each layer feeding the next — and early layers detect simple things like edges, middle layers find shapes, and deep layers recognise objects.</p>
-      <div class="analogy-box">
-        <span class="analogy-icon">🏭</span>
-        <p><strong>Analogy:</strong> A factory assembly line for image understanding. Worker 1 spots edges. Worker 2 combines edges into curves. Worker 3 combines curves into features like "nose" or "wheel". Worker 4 identifies the final object.</p>
-      </div>
-      <div class="key-insight">
-        <span>💡 Why depth matters</span>
-        <p>Each layer learns more abstract features. That's why "deep" learning — many layers — can recognise faces, understand speech, and generate text. Watch the signal propagate →</p>
+<!-- ═══════ S3: NEURAL NETWORKS ═══════ -->
+<section class="learn-section" id="s3" data-dot="2" data-accent="purple">
+  <div class="s-text anim-in">
+    <div class="s-num">03 / Layers of Intelligence</div>
+    <h2>Stack neurons.<br><span class="accent">Get intelligence.</span></h2>
+    <p class="s-lead">One neuron can only detect one simple pattern. But connect them in layers — each layer feeding the next — and early layers detect edges, middle layers find shapes, and deep layers recognise objects.</p>
+    <div class="analogy-box">
+      <span class="analogy-icon">🏭</span>
+      <p><strong>Analogy:</strong> A factory assembly line for image understanding. Worker 1 spots edges. Worker 2 combines edges into curves. Worker 3 combines curves into features. Worker 4 identifies the final object.</p>
+    </div>
+    <div class="key-insight">
+      <span>💡 Why "deep" learning?</span>
+      <p>Each layer learns more abstract features. That's why "deep" learning — many layers — can recognise faces, understand speech, and generate text. Watch the signal propagate →</p>
+    </div>
+  </div>
+  <div class="s-visual anim-in delay">
+    <div class="visual-label">Neural Network — click to run forward pass</div>
+    <div class="canvas-wrap" id="networkCanvas" style="min-height:300px"></div>
+    <div class="controls">
+      <div class="ctrl-bar">
+        <button class="btn-learn primary" id="btnRunNetwork">▶ Run Forward Pass</button>
+        <button class="btn-learn ghost" id="btnAutoNetwork">⟳ Auto Play</button>
       </div>
     </div>
-    <div class="s-visual anim-in delay">
-      <div class="visual-label">Neural Network — click to run forward pass</div>
-      <div class="canvas-wrap" id="networkCanvas" style="min-height:300px"></div>
-      <div class="controls">
-        <div class="ctrl-bar">
-          <button class="btn-learn primary" id="btnRunNetwork">▶ Run Forward Pass</button>
-          <button class="btn-learn ghost" id="btnAutoNetwork">⟳ Auto Play</button>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════
-       SECTION 4 — TRAINING LOOP
-       ═══════════════════════════════════════════ -->
-  <section class="learn-section flip" id="s4" data-dot="3" data-accent="green">
-    <div class="s-text anim-in">
-      <div class="s-num">04 / How AI Learns</div>
-      <h2>Make a guess.<br>Measure the mistake.<br><span class="accent">Adjust. Repeat.</span></h2>
-      <p class="s-lead">AI learning is a feedback loop. The network makes a prediction, we measure how wrong it was (the "loss"), figure out which weights caused the mistake, and nudge those weights to do better next time.</p>
-      <div class="analogy-box">
-        <span class="analogy-icon">🎯</span>
-        <p><strong>Analogy:</strong> Learning to throw darts. You throw (predict), see how far you missed (loss), adjust your arm angle (weights), and throw again. After 10,000 throws, you're hitting the bullseye consistently.</p>
-      </div>
-      <div class="step-list" id="trainingSteps">
-        <div class="step-item active" data-step="0">
-          <div class="step-badge">1</div>
-          <div class="step-text"><h5>Feed Data</h5><p>Send a batch of labelled examples into the network</p></div>
-        </div>
-        <div class="step-item" data-step="1">
-          <div class="step-badge">2</div>
-          <div class="step-text"><h5>Forward Pass → Prediction</h5><p>Network processes inputs through all layers to produce output</p></div>
-        </div>
-        <div class="step-item" data-step="2">
-          <div class="step-badge">3</div>
-          <div class="step-text"><h5>Measure Loss</h5><p>Compare prediction to correct answer. Calculate how wrong it was.</p></div>
-        </div>
-        <div class="step-item" data-step="3">
-          <div class="step-badge">4</div>
-          <div class="step-text"><h5>Backpropagation</h5><p>Error flows backward. Compute how each weight contributed to the mistake.</p></div>
-        </div>
-        <div class="step-item" data-step="4">
-          <div class="step-badge">5</div>
-          <div class="step-text"><h5>Update Weights</h5><p>Nudge every weight in the direction that reduces loss. Repeat from step 1.</p></div>
-        </div>
+<!-- ═══════ S4: TRAINING LOOP ═══════ -->
+<section class="learn-section flip" id="s4" data-dot="3" data-accent="green">
+  <div class="s-text anim-in">
+    <div class="s-num">04 / How AI Learns</div>
+    <h2>Make a guess.<br>Measure the mistake.<br><span class="accent">Adjust. Repeat.</span></h2>
+    <p class="s-lead">AI learning is a feedback loop. The network predicts, we measure how wrong it was (the "loss"), figure out which weights caused the mistake, and nudge those weights to do better next time.</p>
+    <div class="analogy-box">
+      <span class="analogy-icon">🎯</span>
+      <p><strong>Analogy:</strong> Learning to throw darts. You throw (predict), see how far you missed (loss), adjust your arm angle (weights), and throw again. After 10,000 throws, you hit the bullseye consistently.</p>
+    </div>
+    <div class="step-list" id="trainingSteps">
+      <div class="step-item active" data-step="0"><div class="step-badge">1</div><div class="step-text"><h5>Feed Data</h5><p>Send a batch of labelled examples into the network</p></div></div>
+      <div class="step-item" data-step="1"><div class="step-badge">2</div><div class="step-text"><h5>Forward Pass</h5><p>Network processes inputs through all layers to produce output</p></div></div>
+      <div class="step-item" data-step="2"><div class="step-badge">3</div><div class="step-text"><h5>Measure Loss</h5><p>Compare prediction to correct answer — how wrong were we?</p></div></div>
+      <div class="step-item" data-step="3"><div class="step-badge">4</div><div class="step-text"><h5>Backpropagation</h5><p>Error flows backward; compute how each weight contributed to the mistake</p></div></div>
+      <div class="step-item" data-step="4"><div class="step-badge">5</div><div class="step-text"><h5>Update Weights</h5><p>Nudge every weight in the direction that reduces loss. Repeat.</p></div></div>
+    </div>
+  </div>
+  <div class="s-visual anim-in delay">
+    <div class="visual-label">Training loop — watch loss decrease</div>
+    <div class="canvas-wrap" id="trainingCanvas" style="min-height:300px"></div>
+    <div class="controls">
+      <div class="ctrl-bar">
+        <button class="btn-learn primary" id="btnTrain">▶ Train One Epoch</button>
+        <button class="btn-learn ghost" id="btnTrainAuto">⟳ Auto Train</button>
+        <button class="btn-learn ghost sm" id="btnTrainReset">↺</button>
       </div>
     </div>
-    <div class="s-visual anim-in delay">
-      <div class="visual-label">Training loop — watch loss decrease</div>
-      <div class="canvas-wrap" id="trainingCanvas" style="min-height:300px"></div>
-      <div class="controls">
-        <div class="ctrl-bar">
-          <button class="btn-learn primary" id="btnTrain">▶ Train One Epoch</button>
-          <button class="btn-learn ghost" id="btnTrainAuto">⟳ Auto Train</button>
-          <button class="btn-learn ghost sm" id="btnTrainReset">↺</button>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════
-       SECTION 5 — GRADIENT DESCENT
-       ═══════════════════════════════════════════ -->
-  <section class="learn-section" id="s5" data-dot="4" data-accent="orange">
-    <div class="s-text anim-in">
-      <div class="s-num">05 / Finding the Minimum</div>
-      <h2>Roll downhill<br>until you find<br><span class="accent">the valley.</span></h2>
-      <p class="s-lead">Gradient Descent is the algorithm that minimises the loss. It calculates which direction is "downhill" on the loss surface, then takes a step in that direction. Repeat until you reach the lowest point (minimum loss).</p>
-      <div class="analogy-box">
-        <span class="analogy-icon">🏔️</span>
-        <p><strong>Analogy:</strong> You're blindfolded on a hilly landscape trying to find the valley. You feel the slope under your feet (gradient) and take a small step downhill. Do this repeatedly and you'll eventually reach the lowest point.</p>
+<!-- ═══════ S5: GRADIENT DESCENT ═══════ -->
+<section class="learn-section" id="s5" data-dot="4" data-accent="orange">
+  <div class="s-text anim-in">
+    <div class="s-num">05 / Finding the Minimum</div>
+    <h2>Roll downhill<br>until you find<br><span class="accent">the valley.</span></h2>
+    <p class="s-lead">Gradient Descent minimises the loss. It calculates which direction is "downhill" on the loss surface, then takes a step in that direction. Repeat until you reach the minimum.</p>
+    <div class="analogy-box">
+      <span class="analogy-icon">🏔️</span>
+      <p><strong>Analogy:</strong> Blindfolded on a hilly landscape, trying to find the valley. You feel the slope under your feet (gradient) and take a small step downhill. Do this repeatedly and you'll reach the lowest point.</p>
+    </div>
+    <div class="key-insight">
+      <span>💡 The Learning Rate problem</span>
+      <p>Step too small → takes forever. Step too big → overshoot the valley and bounce around.<br><strong>Try both extremes with the slider →</strong></p>
+    </div>
+  </div>
+  <div class="s-visual anim-in delay">
+    <div class="visual-label">Interactive gradient descent — adjust learning rate</div>
+    <div class="canvas-wrap" id="gradCanvas" style="min-height:280px"></div>
+    <div class="controls" id="gradControls">
+      <div class="ctrl-row">
+        <span class="ctrl-label">Learning Rate: <span class="ctrl-val" id="lrVal">0.30</span></span>
+        <input class="ctrl-slider" type="range" id="lrSlider" min="1" max="10" value="3" />
       </div>
-      <div class="key-insight">
-        <span>💡 The Learning Rate problem</span>
-        <p>Step too small: takes forever to reach the bottom.<br>
-        Step too big: you overshoot the valley and bounce around.<br>
-        <strong>Try both extremes with the slider →</strong></p>
+      <div class="ctrl-bar">
+        <button class="btn-learn primary sm" id="btnGradStep">▶ One Step</button>
+        <button class="btn-learn ghost sm" id="btnGradAuto">⚡ Auto</button>
+        <button class="btn-learn ghost sm" id="btnGradReset">↺ Reset</button>
       </div>
     </div>
-    <div class="s-visual anim-in delay">
-      <div class="visual-label">Interactive gradient descent — adjust learning rate</div>
-      <div class="canvas-wrap" id="gradCanvas" style="min-height:280px"></div>
-      <div class="controls" id="gradControls">
-        <div class="ctrl-row">
-          <span class="ctrl-label">Learning Rate: <span class="ctrl-val" id="lrVal">0.30</span></span>
-          <input class="ctrl-slider" type="range" id="lrSlider" min="1" max="10" value="3" />
-        </div>
-        <div class="ctrl-bar">
-          <button class="btn-learn primary sm" id="btnGradStep">▶ One Step</button>
-          <button class="btn-learn ghost sm" id="btnGradAuto">⚡ Auto</button>
-          <button class="btn-learn ghost sm" id="btnGradReset">↺ Reset</button>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════
-       SECTION 6 — TYPES OF ML
-       ═══════════════════════════════════════════ -->
-  <section class="learn-section full-center" id="s6" data-dot="5" data-accent="pink">
-    <div class="s-text anim-in" style="max-width:760px;margin:0 auto;text-align:center">
-      <div class="s-num" style="text-align:center">06 / Learning Styles</div>
-      <h2>Three ways <span class="accent">machines learn</span></h2>
-      <p class="s-lead" style="max-width:560px;margin:0 auto">Not all AI systems learn the same way. Depending on what data you have and what problem you're solving, you'll choose a different learning paradigm.</p>
+<!-- ═══════ S6: TYPES OF ML ═══════ -->
+<section class="learn-section full-center" id="s6" data-dot="5" data-accent="pink">
+  <div class="s-text anim-in" style="max-width:760px;margin:0 auto;text-align:center">
+    <div class="s-num" style="text-align:center">06 / Learning Styles</div>
+    <h2>Three ways <span class="accent">machines learn</span></h2>
+    <p class="s-lead" style="max-width:560px;margin:0 auto">Not all AI systems learn the same way. Depending on what data you have and what problem you're solving, you'll choose a different learning paradigm.</p>
+  </div>
+  <div class="anim-in delay" style="width:100%">
+    <div class="compare-grid cols-3">
+      <div class="compare-card" style="border-color:rgba(34,211,238,0.2)">
+        <div class="cc-icon">👩‍🏫</div>
+        <h4>Supervised Learning</h4>
+        <p>Learn from labelled examples. A teacher provides both the question <em>and</em> the correct answer. The model learns to map inputs → outputs.</p>
+        <div style="margin-top:14px;background:rgba(0,0,0,0.3);border-radius:10px;padding:10px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#22d3ee">
+          Input: photo of cat<br>Label: "cat" ✓<br>→ Model learns the pattern
+        </div>
+        <div class="cc-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.3)">Spam filters · Medical diagnosis</div>
+      </div>
+      <div class="compare-card" style="border-color:rgba(192,132,252,0.2)">
+        <div class="cc-icon">🔍</div>
+        <h4>Unsupervised Learning</h4>
+        <p>No labels provided. The algorithm discovers hidden structure and patterns in the data entirely on its own.</p>
+        <div style="margin-top:14px;background:rgba(0,0,0,0.3);border-radius:10px;padding:10px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#c084fc">
+          Input: 1 million songs<br>No labels given<br>→ Discovers genres naturally
+        </div>
+        <div class="cc-tag" style="color:#c084fc;border-color:rgba(192,132,252,0.3)">Customer grouping · Topic modelling</div>
+      </div>
+      <div class="compare-card" style="border-color:rgba(251,191,36,0.2)">
+        <div class="cc-icon">🎮</div>
+        <h4>Reinforcement Learning</h4>
+        <p>An agent learns by interacting with an environment, receiving rewards for good actions and penalties for bad ones — like training a dog with treats.</p>
+        <div style="margin-top:14px;background:rgba(0,0,0,0.3);border-radius:10px;padding:10px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#fbbf24">
+          Action taken → +10 reward<br>Bad action → -1 penalty<br>→ Learns optimal policy
+        </div>
+        <div class="cc-tag" style="color:#fbbf24;border-color:rgba(251,191,36,0.3)">AlphaGo · Self-driving · ChatGPT RLHF</div>
+      </div>
     </div>
-    <div class="anim-in delay" style="width:100%">
-      <div class="compare-grid cols-3" id="mlTypesGrid">
-        <div class="compare-card" style="border-color:rgba(34,211,238,0.2)">
-          <div class="cc-icon">👩‍🏫</div>
-          <h4>Supervised Learning</h4>
-          <p>Learn from labelled examples. A teacher provides both the question <em>and</em> the correct answer. The model learns to map inputs → outputs.</p>
-          <div style="margin-top:14px;background:rgba(0,0,0,0.3);border-radius:10px;padding:10px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#22d3ee">
-            Input: photo of cat<br>Label: "cat" ✓<br>Input: photo of dog<br>Label: "dog" ✓<br>→ Model learns the pattern
+  </div>
+</section>
+
+<!-- ═══════ S7: TOKENS ═══════ -->
+<section class="learn-section flip" id="s7" data-dot="6" data-accent="orange">
+  <div class="s-text anim-in">
+    <div class="s-num">07 / Tokens &amp; Tokenization</div>
+    <h2>LLMs don't read<br>words. They read<br><span class="accent">tokens.</span></h2>
+    <p class="s-lead">Before processing text, an LLM breaks it into "tokens" — chunks that can be whole words, parts of words, or single characters. "tokenization" becomes ["token", "ization"]. Understanding tokens explains context windows, costs, and quirky model behaviours.</p>
+    <div class="analogy-box">
+      <span class="analogy-icon">🎵</span>
+      <p><strong>Analogy — Sheet music:</strong> A musician reads notes and chords — pre-packaged sound units. They don't think in individual vibrations. Tokens are the "notes" of language for an LLM. Common words = one note. Rare words get broken into parts.</p>
+    </div>
+    <div class="key-insight">
+      <span>💡 Why tokens matter</span>
+      <p><strong>Context window:</strong> GPT-4 handles 128,000 tokens (~96,000 words) per conversation.<br>
+      <strong>Cost:</strong> API pricing is per token — long prompts = higher cost.<br>
+      <strong>Quirks:</strong> LLMs struggled with "9.11 vs 9.9" because numbers are tokens, not math.<br>
+      <strong>Rule of thumb:</strong> ~1 token ≈ ¾ of an English word.</p>
+    </div>
+  </div>
+  <div class="s-visual anim-in delay">
+    <div class="visual-label">Live tokenizer — type text and watch it split into tokens</div>
+    <div class="canvas-wrap" style="padding:16px;min-height:160px;display:flex;flex-direction:column;gap:10px">
+      <textarea id="tokenInput"
+        style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.12);color:#f0f0ff;font-family:'JetBrains Mono',monospace;font-size:0.88rem;outline:none;resize:none;padding:4px 0;line-height:1.6;caret-color:#a78bfa"
+        rows="2" spellcheck="false">How does tokenization work in large language models?</textarea>
+      <div id="tokenOutput" style="display:flex;flex-wrap:wrap;gap:6px;min-height:52px;align-content:flex-start"></div>
+      <div id="tokenStats" style="font-size:0.72rem;font-family:'JetBrains Mono',monospace;color:#56566e;padding-top:4px;border-top:1px solid rgba(255,255,255,0.05)"></div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+      <button class="btn-learn ghost sm" onclick="document.getElementById('tokenInput').value='ChatGPT is an AI assistant'; updateTokens()">Try: ChatGPT</button>
+      <button class="btn-learn ghost sm" onclick="document.getElementById('tokenInput').value='9.11 > 9.9 is false'; updateTokens()">Try: 9.11 vs 9.9</button>
+      <button class="btn-learn ghost sm" onclick="document.getElementById('tokenInput').value='Supercalifragilistic!'; updateTokens()">Try: long word</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ S8: EMBEDDINGS ═══════ -->
+<section class="learn-section" id="s8" data-dot="7" data-accent="purple">
+  <div class="s-text anim-in">
+    <div class="s-num">08 / Embeddings &amp; Meaning</div>
+    <h2>Words as<br>coordinates in<br><span class="accent">meaning-space.</span></h2>
+    <p class="s-lead">Before an LLM processes a token, it converts it into an embedding — a list of hundreds of numbers (a vector) representing its meaning. Similar words have similar vectors, which is how AI understands context and finds related concepts.</p>
+    <div class="analogy-box">
+      <span class="analogy-icon">🗺️</span>
+      <p><strong>Analogy — GPS coordinates:</strong> "Paris" and "London" are different cities but close on a map. "Paris" and "Jupiter" are far apart. Embeddings are GPS coordinates on a "map of meaning" — similar concepts cluster together, distant ones are far apart.</p>
+    </div>
+    <div class="key-insight">
+      <span>💡 Vector arithmetic works!</span>
+      <p><strong>king − man + woman ≈ queen</strong><br>
+      This is real math on embedding vectors. The model has learned that "king" and "queen" differ only by the "gender" dimension. This is how semantic search, RAG, and recommendations work — all just distance calculations in embedding space.</p>
+    </div>
+  </div>
+  <div class="s-visual anim-in delay">
+    <div class="visual-label">Word embedding map — hover to see relationships</div>
+    <div class="canvas-wrap" id="embeddingCanvas" style="min-height:340px"></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+      <span style="font-size:0.72rem;color:#56566e">Clusters:</span>
+      <span style="font-size:0.72rem;padding:2px 8px;border-radius:6px;background:rgba(251,191,36,0.1);color:#fbbf24">Royalty</span>
+      <span style="font-size:0.72rem;padding:2px 8px;border-radius:6px;background:rgba(34,211,238,0.1);color:#22d3ee">People</span>
+      <span style="font-size:0.72rem;padding:2px 8px;border-radius:6px;background:rgba(34,211,165,0.1);color:#22d3a5">Animals</span>
+      <span style="font-size:0.72rem;padding:2px 8px;border-radius:6px;background:rgba(124,111,255,0.1);color:#a78bfa">Tech</span>
+      <span style="font-size:0.72rem;padding:2px 8px;border-radius:6px;background:rgba(251,115,36,0.1);color:#fb923c">Food</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ S9: TRANSFORMERS & ATTENTION ═══════ -->
+<section class="learn-section flip" id="s9" data-dot="8" data-accent="cyan">
+  <div class="s-text anim-in">
+    <div class="s-num">09 / Transformers &amp; Attention</div>
+    <h2>Every word<br>watches every<br><span class="accent">other word.</span></h2>
+    <p class="s-lead">The Transformer (2017, "Attention Is All You Need") revolutionised AI. Its core innovation: self-attention — each token can look at any other token in the sequence, weighted by relevance. This lets models understand long-range context in a single pass.</p>
+    <div class="analogy-box">
+      <span class="analogy-icon">🔍</span>
+      <p><strong>Analogy — Reading a detective novel:</strong> When you hit "he did it", your brain instantly links "he" back to the suspect mentioned 3 pages ago. Attention does the same — every word can "look back" at any earlier word and decide how much it matters for understanding the current word.</p>
+    </div>
+    <div class="key-insight">
+      <span>💡 Why it matters</span>
+      <p>"Bank" means different things in "river bank" vs "deposit at the bank". Attention lets the model look at surrounding words and disambiguate. GPT, Claude, Gemini, BERT — all Transformer-based. The 2017 paper is the single most impactful AI paper of the decade.</p>
+    </div>
+  </div>
+  <div class="s-visual anim-in delay">
+    <div class="visual-label">Self-attention — click any word to see what it attends to</div>
+    <div class="canvas-wrap" id="attentionCanvas" style="min-height:320px"></div>
+    <div class="ctrl-bar" style="margin-top:10px">
+      <button class="btn-learn ghost sm" id="attnEx1">Example: "river bank"</button>
+      <button class="btn-learn ghost sm" id="attnEx2">Example: "money bank"</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ S10: LLMs ═══════ -->
+<section class="learn-section" id="s10" data-dot="9" data-accent="green">
+  <div class="s-text anim-in">
+    <div class="s-num">10 / Large Language Models</div>
+    <h2>Predict the<br>next word.<br><span class="accent">Trillions of times.</span></h2>
+    <p class="s-lead">LLMs are trained on a single objective: given all previous tokens, predict the next token. That's it. But do this on essentially all human-written text with hundreds of billions of parameters, and remarkable capabilities emerge — writing, coding, reasoning, translating — none explicitly programmed.</p>
+    <div class="analogy-box">
+      <span class="analogy-icon">📱</span>
+      <p><strong>Analogy — Autocomplete on steroids:</strong> Your phone's autocomplete was trained on your own messages and suggests next words. LLMs were trained on essentially all human knowledge, at incomparably larger scale. Same task, completely different capability that emerges from scale.</p>
+    </div>
+    <div class="key-insight">
+      <span>💡 Scale creates new abilities</span>
+      <p>GPT-1 (117M params, 2018): barely coherent sentences.<br>
+      GPT-3 (175B params, 2020): writes essays, translates.<br>
+      GPT-4 (~1.8T params est., 2023): passes bar exam, reasons about novel situations.<br>
+      <strong>No one explicitly programmed these capabilities — they emerged from scale.</strong></p>
+    </div>
+  </div>
+  <div class="s-visual anim-in delay">
+    <div class="visual-label">Next-token prediction — adjust temperature, click Generate</div>
+    <div class="canvas-wrap" id="llmCanvas" style="min-height:300px"></div>
+    <div class="controls">
+      <div class="ctrl-row">
+        <span class="ctrl-label">Temperature: <span class="ctrl-val" id="tempVal">0.7</span></span>
+        <input class="ctrl-slider" type="range" id="tempSlider" min="1" max="20" value="7" />
+      </div>
+      <div style="font-size:0.72rem;color:#56566e;font-family:'JetBrains Mono',monospace">
+        Low = predictable · High = creative/random
+      </div>
+      <div class="ctrl-bar" style="margin-top:8px">
+        <button class="btn-learn primary sm" id="btnGenToken">+ Generate Token</button>
+        <button class="btn-learn ghost sm" id="btnGenReset">↺ Reset</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ S11: GENERATIVE AI ═══════ -->
+<section class="learn-section flip" id="s11" data-dot="10" data-accent="pink">
+  <div class="s-text anim-in">
+    <div class="s-num">11 / Generative AI</div>
+    <h2>AI that creates,<br>not just<br><span class="accent">classifies.</span></h2>
+    <p class="s-lead">Traditional ML classifies (is this a cat or dog?). Generative AI produces new content — text, images, audio, code, video. Different modalities use different architectures: Transformers for text, Diffusion models for images, GANs for some video.</p>
+    <div class="analogy-box">
+      <span class="analogy-icon">🎨</span>
+      <p><strong>Diffusion models:</strong> Learn by studying noise. Training = take real images, gradually add random noise until it's pure static, teach the model to reverse the process. Inference = start with pure noise, denoise step-by-step guided by a text prompt. <em>Midjourney, DALL-E, Stable Diffusion all use this.</em></p>
+    </div>
+    <div class="key-insight">
+      <span>💡 Four types of Generative AI</span>
+      <p><strong>Text:</strong> GPT-4, Claude, Gemini (Transformer + RLHF)<br>
+      <strong>Image:</strong> DALL-E, Midjourney, Stable Diffusion (Diffusion models)<br>
+      <strong>Code:</strong> GitHub Copilot, Cursor (LLMs fine-tuned on code)<br>
+      <strong>Multimodal:</strong> GPT-4o, Gemini Ultra (see, hear, and speak)</p>
+    </div>
+  </div>
+  <div class="s-visual anim-in delay">
+    <div class="visual-label">Diffusion — noise gradually becomes an image</div>
+    <div class="canvas-wrap" id="diffusionCanvas" style="min-height:300px"></div>
+    <div class="ctrl-bar" style="margin-top:10px">
+      <button class="btn-learn primary sm" id="btnDiffuse">▶ Run Diffusion</button>
+      <button class="btn-learn ghost sm" id="btnDiffuseReset">↺ Reset to Noise</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ S12: PROMPT ENGINEERING ═══════ -->
+<section class="learn-section full-center" id="s12" data-dot="11" data-accent="orange">
+  <div class="s-text anim-in" style="max-width:760px;margin:0 auto;text-align:center">
+    <div class="s-num" style="text-align:center">12 / Prompt Engineering</div>
+    <h2>How you ask matters<br><span class="accent">as much as what you ask.</span></h2>
+    <p class="s-lead" style="max-width:580px;margin:0 auto">LLMs are extremely sensitive to phrasing. Prompt Engineering is the skill of designing inputs that get the best possible output. Three techniques unlock dramatically better results.</p>
+  </div>
+  <div class="anim-in delay" style="width:100%">
+    <div class="compare-grid cols-3">
+      <div class="prompt-card">
+        <div class="prompt-label" style="color:#22d3ee">Zero-Shot</div>
+        <p style="font-size:0.8rem;color:var(--text-2)">Just ask the question directly. Works for common tasks the model has seen in training. Fast, but quality varies.</p>
+        <div class="prompt-box">Translate "Hello, how are you?" to French.</div>
+        <div style="font-size:0.7rem;color:#56566e;text-align:center">↓ Output</div>
+        <div class="prompt-output">Bonjour, comment allez-vous ?</div>
+        <div class="cc-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.3);margin-top:8px">Best for: simple, common tasks</div>
+      </div>
+      <div class="prompt-card" style="border-color:rgba(124,111,255,0.2)">
+        <div class="prompt-label" style="color:#a78bfa">Few-Shot</div>
+        <p style="font-size:0.8rem;color:var(--text-2)">Provide 2–5 examples of the pattern you want. The model infers the rule from your examples. Dramatically improves consistency.</p>
+        <div class="prompt-box">Tweet: "Great product!" → Positive
+Tweet: "Broken on arrival" → Negative
+Tweet: "Does the job" → ?</div>
+        <div style="font-size:0.7rem;color:#56566e;text-align:center">↓ Output</div>
+        <div class="prompt-output" style="border-color:rgba(124,111,255,0.2)">Neutral</div>
+        <div class="cc-tag" style="color:#a78bfa;border-color:rgba(124,111,255,0.3);margin-top:8px">Best for: classification, formatting</div>
+      </div>
+      <div class="prompt-card" style="border-color:rgba(34,211,165,0.2)">
+        <div class="prompt-label" style="color:#22d3a5">Chain-of-Thought</div>
+        <p style="font-size:0.8rem;color:var(--text-2)">Add "Let's think step by step" or show reasoning examples. Forces the model to reason before answering. Boosts accuracy on hard problems by 40–50%.</p>
+        <div class="prompt-box">Q: If a train travels 60 mph for 2.5 hours, how far?
+Let's think step by step.</div>
+        <div style="font-size:0.7rem;color:#56566e;text-align:center">↓ Output</div>
+        <div class="prompt-output" style="border-color:rgba(34,211,165,0.2)">Speed = 60 mph. Time = 2.5 hrs. Distance = 60 × 2.5 = <strong>150 miles</strong>.</div>
+        <div class="cc-tag" style="color:#22d3a5;border-color:rgba(34,211,165,0.3);margin-top:8px">Best for: math, reasoning, code</div>
+      </div>
+    </div>
+    <div class="key-insight" style="max-width:700px;margin:20px auto 0;text-align:left">
+      <span>💡 Power tips</span>
+      <p><strong>Be specific:</strong> "Write a Python function that..." beats "write code".<br>
+      <strong>Give context:</strong> "You are a senior security engineer reviewing..." sets the role.<br>
+      <strong>Specify format:</strong> "Return a JSON object with keys: name, score, reason".<br>
+      <strong>Constrain length:</strong> "In 3 bullet points" prevents 10-page essays.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ S13: AI AGENTS ═══════ -->
+<section class="learn-section" id="s13" data-dot="12" data-accent="red">
+  <div class="s-text anim-in">
+    <div class="s-num">13 / Agentic AI</div>
+    <h2>AI that acts,<br>not just<br><span class="accent">answers.</span></h2>
+    <p class="s-lead">Traditional LLMs answer one question per call. AI Agents combine LLMs with tools (search, code execution, APIs, browser) and run in a loop — thinking, acting, observing results, repeating — to complete complex multi-step tasks autonomously.</p>
+    <div class="analogy-box">
+      <span class="analogy-icon">👷</span>
+      <p><strong>Analogy — Consultant vs Employee:</strong> Asking a one-shot LLM is like a consulting call: one question, one answer. An AI Agent is like a full-time employee with access to tools: they receive a goal, break it into steps, use whatever tools needed, and report back when done.</p>
+    </div>
+    <div class="key-insight">
+      <span>💡 The Agent Loop</span>
+      <p><strong>Perceive:</strong> Read the task and current context<br>
+      <strong>Think:</strong> Reason about what needs to be done next<br>
+      <strong>Act:</strong> Call a tool (search, run code, write file, call API)<br>
+      <strong>Observe:</strong> Read the tool's output, update context<br>
+      <strong>Repeat</strong> until the task is complete.<br><br>
+      Examples: Claude computer use, GitHub Copilot Workspace, Devin AI, AutoGPT.</p>
+    </div>
+  </div>
+  <div class="s-visual anim-in delay">
+    <div class="visual-label">Agent loop — watch each step execute</div>
+    <div class="canvas-wrap" id="agentCanvas" style="min-height:340px"></div>
+    <div class="ctrl-bar" style="margin-top:10px">
+      <button class="btn-learn primary sm" id="btnAgentRun">▶ Run Agent</button>
+      <button class="btn-learn ghost sm" id="btnAgentReset">↺ Reset</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ S14: REAL WORLD AI ═══════ -->
+<section class="learn-section full-center" id="s14" data-dot="13" data-accent="green">
+  <div class="s-text anim-in" style="text-align:center;max-width:700px;margin:0 auto">
+    <div class="s-num" style="text-align:center">14 / The AI Landscape</div>
+    <h2>Now you can trace<br><span class="accent">how everything connects</span></h2>
+    <p class="s-lead" style="margin:0 auto;max-width:540px">Every AI product you use daily maps directly to the concepts you just learned. Here's the complete picture.</p>
+  </div>
+  <div class="anim-in delay" style="width:100%">
+    <div class="compare-grid cols-2">
+      <div class="compare-card" style="display:flex;gap:16px;align-items:flex-start">
+        <span style="font-size:2rem;flex-shrink:0">🗣️</span>
+        <div>
+          <h4>ChatGPT / Claude / Gemini</h4>
+          <p>Transformer LLMs trained on next-token prediction. Fine-tuned with RLHF (Reinforcement Learning from Human Feedback). Trillions of parameters.</p>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:8px">
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(124,111,255,0.15);color:#a78bfa;font-weight:700">Transformer</span>
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(124,111,255,0.15);color:#a78bfa;font-weight:700">LLM</span>
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(124,111,255,0.15);color:#a78bfa;font-weight:700">RLHF</span>
           </div>
-          <div class="cc-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.3)">Spam filters, Medical diagnosis</div>
-        </div>
-        <div class="compare-card" style="border-color:rgba(192,132,252,0.2)">
-          <div class="cc-icon">🔍</div>
-          <h4>Unsupervised Learning</h4>
-          <p>No labels provided. The algorithm discovers hidden structure and patterns in the data entirely on its own.</p>
-          <div style="margin-top:14px;background:rgba(0,0,0,0.3);border-radius:10px;padding:10px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#c084fc">
-            Input: 1 million songs<br>No labels given<br>→ Model discovers genres:<br>  Group A, B, C, D...
-          </div>
-          <div class="cc-tag" style="color:#c084fc;border-color:rgba(192,132,252,0.3)">Customer grouping, Topic modelling</div>
-        </div>
-        <div class="compare-card" style="border-color:rgba(251,191,36,0.2)">
-          <div class="cc-icon">🎮</div>
-          <h4>Reinforcement Learning</h4>
-          <p>An agent learns by interacting with an environment, receiving rewards for good actions and penalties for bad ones — like training a dog with treats.</p>
-          <div style="margin-top:14px;background:rgba(0,0,0,0.3);border-radius:10px;padding:10px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#fbbf24">
-            Agent takes action<br>+10 reward (goal reached)<br>-1 reward (wall hit)<br>→ Agent learns optimal path
-          </div>
-          <div class="cc-tag" style="color:#fbbf24;border-color:rgba(251,191,36,0.3)">AlphaGo, Self-driving, Robotics</div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════
-       SECTION 7 — REAL WORLD AI
-       ═══════════════════════════════════════════ -->
-  <section class="learn-section full-center" id="s7" data-dot="6" data-accent="green">
-    <div class="s-text anim-in" style="text-align:center;max-width:700px;margin:0 auto">
-      <div class="s-num" style="text-align:center">07 / Where It All Lives</div>
-      <h2>These concepts power<br><span class="accent">everything you already use</span></h2>
-      <p class="s-lead" style="margin:0 auto;max-width:540px">Every AI product you interact with daily runs on some combination of these fundamentals. Now you can trace the connection.</p>
-    </div>
-    <div class="anim-in delay" style="width:100%">
-      <div class="compare-grid cols-2">
-        <div class="compare-card" style="display:flex;gap:16px;align-items:flex-start">
-          <span style="font-size:2rem">🗣️</span>
-          <div>
-            <h4>ChatGPT / Claude / Gemini</h4>
-            <p>Transformer neural networks trained on next-token prediction. Billions of neurons. Supervised + RL from human feedback.</p>
-            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
-              <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(124,111,255,0.15);color:#a78bfa;font-weight:700">Neural Networks</span>
-              <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(124,111,255,0.15);color:#a78bfa;font-weight:700">Gradient Descent</span>
-              <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(124,111,255,0.15);color:#a78bfa;font-weight:700">Supervised + RL</span>
-            </div>
+      <div class="compare-card" style="display:flex;gap:16px;align-items:flex-start">
+        <span style="font-size:2rem;flex-shrink:0">🎨</span>
+        <div>
+          <h4>DALL-E / Midjourney / Stable Diffusion</h4>
+          <p>Diffusion models trained on image-text pairs. Embeddings map your text prompt into the image space. Denoising produces the final image over ~50 steps.</p>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:8px">
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(244,114,182,0.15);color:#f472b6;font-weight:700">Diffusion</span>
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(244,114,182,0.15);color:#f472b6;font-weight:700">Embeddings</span>
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(244,114,182,0.15);color:#f472b6;font-weight:700">GenAI</span>
           </div>
         </div>
-        <div class="compare-card" style="display:flex;gap:16px;align-items:flex-start">
-          <span style="font-size:2rem">📸</span>
-          <div>
-            <h4>Face ID / Google Photos</h4>
-            <p>Convolutional Neural Networks that learn to detect facial features through millions of labelled training images.</p>
-            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
-              <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(34,211,238,0.12);color:#22d3ee;font-weight:700">Deep Networks</span>
-              <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(34,211,238,0.12);color:#22d3ee;font-weight:700">Supervised ML</span>
-            </div>
+      </div>
+      <div class="compare-card" style="display:flex;gap:16px;align-items:flex-start">
+        <span style="font-size:2rem;flex-shrink:0">💻</span>
+        <div>
+          <h4>GitHub Copilot / Cursor / Devin</h4>
+          <p>Code-trained LLMs + Agentic capabilities. Copilot = single completions. Cursor Agent = multi-file edits. Devin = plan, code, test, debug autonomously.</p>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:8px">
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(34,211,165,0.15);color:#22d3a5;font-weight:700">LLM + Code</span>
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(34,211,165,0.15);color:#22d3a5;font-weight:700">Agents</span>
           </div>
         </div>
-        <div class="compare-card" style="display:flex;gap:16px;align-items:flex-start">
-          <span style="font-size:2rem">🎵</span>
-          <div>
-            <h4>Spotify / Netflix Recommendations</h4>
-            <p>Unsupervised learning to cluster similar users. Supervised learning to predict your rating of unseen content.</p>
-            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
-              <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(192,132,252,0.15);color:#c084fc;font-weight:700">Unsupervised ML</span>
-              <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(192,132,252,0.15);color:#c084fc;font-weight:700">Collaborative Filter</span>
-            </div>
-          </div>
-        </div>
-        <div class="compare-card" style="display:flex;gap:16px;align-items:flex-start">
-          <span style="font-size:2rem">🚗</span>
-          <div>
-            <h4>Tesla Autopilot / Waymo</h4>
-            <p>Reinforcement learning from millions of miles of driving data. Supervised vision models for lane/object detection.</p>
-            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
-              <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(251,191,36,0.12);color:#fbbf24;font-weight:700">Reinforcement RL</span>
-              <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(251,191,36,0.12);color:#fbbf24;font-weight:700">Vision Networks</span>
-            </div>
+      </div>
+      <div class="compare-card" style="display:flex;gap:16px;align-items:flex-start">
+        <span style="font-size:2rem;flex-shrink:0">🔎</span>
+        <div>
+          <h4>Perplexity / ChatGPT Search / NotebookLM</h4>
+          <p>RAG (Retrieval Augmented Generation) — embeddings index documents, semantic search finds relevant chunks, LLM generates answers grounded in retrieved facts.</p>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:8px">
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(34,211,238,0.15);color:#22d3ee;font-weight:700">Embeddings</span>
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(34,211,238,0.15);color:#22d3ee;font-weight:700">RAG</span>
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(34,211,238,0.15);color:#22d3ee;font-weight:700">LLM</span>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════
-       CTA
-       ═══════════════════════════════════════════ -->
-  <section class="learn-cta">
-    <div class="learn-cta-inner">
-      <h2>Ready to test what you learned?</h2>
-      <p>The AI Mastery Quiz has 15 interactive challenges — one per concept — with animations, knowledge checks, and XP rewards.</p>
-      <div class="learn-cta-btns">
-        <a href="ai.html" class="btn-learn primary" style="padding:14px 32px;font-size:1rem;border-radius:12px">🎮 Take the AI Quiz</a>
-        <a href="index.html" class="btn-learn ghost" style="padding:14px 24px;font-size:1rem;border-radius:12px">← Explore All Tracks</a>
-      </div>
+<!-- ═══════ CTA ═══════ -->
+<section class="learn-cta">
+  <div class="learn-cta-inner">
+    <h2>You know the full AI landscape.</h2>
+    <p>From neurons to agents — test what you've learned with the AI Mastery Quiz.</p>
+    <div class="learn-cta-btns">
+      <a href="ai.html" class="btn-learn primary" style="padding:14px 32px;font-size:1rem;border-radius:12px">🎮 Take the AI Quiz</a>
+      <a href="index.html" class="btn-learn ghost" style="padding:14px 24px;font-size:1rem;border-radius:12px">← All Tracks</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer class="learn-footer">
-    <span>LearnWithFun — AI Basics</span>
-    <div style="display:flex;gap:20px">
-      <a href="learn-cloud.html">Cloud →</a>
-      <a href="learn-devops.html">DevOps →</a>
-      <a href="learn-security.html">Security →</a>
-    </div>
-  </footer>
+<footer class="learn-footer">
+  <span>LearnWithFun — AI &amp; Machine Learning</span>
+  <div style="display:flex;gap:20px">
+    <a href="learn-cloud.html">Cloud →</a>
+    <a href="learn-devops.html">DevOps →</a>
+    <a href="learn-security.html">Security →</a>
+  </div>
+</footer>
 
-  <script src="learn.js"></script>
-  <script src="learn-ai.js"></script>
+<script src="learn.js"></script>
+<script src="learn-ai.js"></script>
 </body>
 </html>

@@ -324,6 +324,43 @@ body {
 .learn-footer a { color: var(--text-2); text-decoration: none; transition: color 0.2s; }
 .learn-footer a:hover { color: var(--text); }
 
+/* ── TOKEN CHIPS (tokenizer section) ── */
+.token-chip {
+  display: inline-flex; align-items: center;
+  padding: 4px 9px; border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem; font-weight: 700;
+  border: 1px solid; line-height: 1.2;
+  transition: transform 0.15s;
+  cursor: default;
+}
+.token-chip:hover { transform: translateY(-2px); }
+.token-chip.word    { background:rgba(34,211,238,0.12); color:#22d3ee; border-color:rgba(34,211,238,0.3); }
+.token-chip.subword { background:rgba(124,111,255,0.12); color:#a78bfa; border-color:rgba(124,111,255,0.3); }
+.token-chip.number  { background:rgba(251,191,36,0.12); color:#fbbf24; border-color:rgba(251,191,36,0.3); }
+.token-chip.punct   { background:rgba(86,86,110,0.2); color:#9191a8; border-color:rgba(86,86,110,0.4); }
+.token-chip.space   { background:rgba(255,255,255,0.04); color:#3a3a50; border-color:rgba(255,255,255,0.06); font-size:0.65rem; }
+
+/* ── PROMPT TECHNIQUE CARDS ── */
+.prompt-card {
+  background:rgba(255,255,255,0.02); border:1px solid var(--border);
+  border-radius:16px; padding:20px; display:flex; flex-direction:column; gap:10px;
+  transition: all 0.25s;
+}
+.prompt-card:hover { border-color:rgba(255,255,255,0.14); transform:translateY(-3px); }
+.prompt-label { font-size:0.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.12em; margin-bottom:4px; }
+.prompt-box {
+  background:rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.07);
+  border-radius:10px; padding:10px 12px;
+  font-family:'JetBrains Mono',monospace; font-size:0.73rem;
+  color:rgba(255,255,255,0.65); line-height:1.6; white-space:pre-wrap;
+}
+.prompt-output {
+  background:rgba(34,211,165,0.06); border:1px solid rgba(34,211,165,0.2);
+  border-radius:10px; padding:10px 12px;
+  font-size:0.8rem; color:rgba(255,255,255,0.8); line-height:1.65;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .learn-section { grid-template-columns: 1fr; gap: 36px; padding: 90px 32px 60px; }
