@@ -1075,6 +1075,311 @@ function initAgents() {
   draw();
 }
 
+/* ══════════ S14 — RAG Pipeline ══════════ */
+function initRAG() {
+  const container = document.getElementById('ragCanvas');
+  const runBtn  = document.getElementById('btnRagRun');
+  const resetBtn = document.getElementById('btnRagReset');
+  if (!container) return;
+
+  const STAGES = [
+    { label: 'User Query',      sub: '"What is our refund policy?"',   icon: '❓', color: '#22d3ee' },
+    { label: 'Embed Query',     sub: '[0.23, 0.87, −0.44, 0.61 …]',    icon: '🔢', color: '#a78bfa' },
+    { label: 'Vector Search',   sub: 'Searching 10,000 doc chunks',     icon: '🔍', color: '#fbbf24' },
+    { label: 'Retrieved Chunks',sub: '"Refunds accepted within 30 days"',icon: '📄', color: '#22d3a5' },
+    { label: 'LLM + Context',   sub: 'Grounded answer generated',       icon: '🤖', color: '#f87171' },
+  ];
+
+  const ARROWS = ['embed', 'search', 'retrieve', 'generate', ''];
+  let activeStage = -1, interval = null;
+
+  function draw() {
+    const { ctx, W, H } = initCanvas(container);
+    const pad = 18, stageW = (W - pad * 2 - (STAGES.length - 1) * 8) / STAGES.length;
+    const stageH = 90, stageY = H / 2 - stageH / 2 - 10;
+
+    // Title
+    ctx.font = 'bold 10px Plus Jakarta Sans,sans-serif'; ctx.fillStyle = '#56566e'; ctx.textAlign = 'center';
+    ctx.fillText('RAG retrieves context before answering — grounded in your documents', W / 2, 18);
+
+    STAGES.forEach((stage, i) => {
+      const x = pad + i * (stageW + 8);
+      const isActive = i === activeStage;
+      const isDone = i < activeStage;
+
+      // Arrow between stages
+      if (i > 0) {
+        const arrowX = x - 6;
+        ctx.beginPath(); ctx.moveTo(arrowX - 4, stageY + stageH / 2); ctx.lineTo(arrowX, stageY + stageH / 2);
+        ctx.strokeStyle = isDone ? stage.color + '70' : 'rgba(255,255,255,0.12)';
+        ctx.lineWidth = 1.5; ctx.stroke();
+      }
+
+      // Stage box
+      ctx.fillStyle = isActive ? stage.color + '22' : isDone ? stage.color + '10' : 'rgba(255,255,255,0.03)';
+      rr(ctx, x, stageY, stageW, stageH, 10); ctx.fill();
+      ctx.strokeStyle = isActive ? stage.color : isDone ? stage.color + '50' : 'rgba(255,255,255,0.08)';
+      ctx.lineWidth = isActive ? 1.5 : 1;
+      if (isActive) { ctx.shadowColor = stage.color; ctx.shadowBlur = 12; }
+      rr(ctx, x, stageY, stageW, stageH, 10); ctx.stroke(); ctx.shadowBlur = 0;
+
+      // Icon
+      ctx.font = '20px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(stage.icon, x + stageW / 2, stageY + 28);
+
+      // Label
+      ctx.font = `${isActive ? 'bold ' : ''}9px Plus Jakarta Sans,sans-serif`;
+      ctx.fillStyle = isActive ? stage.color : isDone ? stage.color + 'cc' : '#56566e';
+      ctx.textAlign = 'center';
+      ctx.fillText(stage.label, x + stageW / 2, stageY + 44);
+
+      // Sub label (visible when active or done)
+      if (isActive || isDone) {
+        ctx.font = '8px Plus Jakarta Sans,sans-serif'; ctx.fillStyle = 'rgba(255,255,255,0.45)';
+        const sub = stage.sub;
+        const maxW = stageW - 8;
+        // Wrap text
+        const words = sub.split(' ');
+        let line = '', lines = [];
+        words.forEach(w => {
+          const test = line ? line + ' ' + w : w;
+          if (ctx.measureText(test).width > maxW && line) { lines.push(line); line = w; }
+          else line = test;
+        });
+        if (line) lines.push(line);
+        lines.slice(0, 2).forEach((l, li) => ctx.fillText(l, x + stageW / 2, stageY + 58 + li * 12));
+      }
+    });
+
+    // Status row
+    ctx.font = '10px JetBrains Mono,monospace'; ctx.textAlign = 'center';
+    if (activeStage < 0) {
+      ctx.fillStyle = '#56566e'; ctx.fillText('Click "Run RAG Query" to step through the pipeline', W / 2, stageY + stageH + 28);
+    } else if (activeStage >= STAGES.length) {
+      ctx.fillStyle = '#22d3a5'; ctx.fillText('✓ Answer grounded in documents — not hallucinated', W / 2, stageY + stageH + 28);
+    } else {
+      ctx.fillStyle = STAGES[activeStage].color;
+      ctx.fillText('Stage ' + (activeStage + 1) + ' / ' + STAGES.length + ': ' + STAGES[activeStage].label, W / 2, stageY + stageH + 28);
+    }
+
+    // Contrast box at bottom
+    const by = stageY + stageH + 44;
+    ctx.fillStyle = 'rgba(34,211,165,0.06)'; rr(ctx, pad, by, W - pad * 2, 42, 8); ctx.fill();
+    ctx.strokeStyle = 'rgba(34,211,165,0.2)'; ctx.lineWidth = 1; rr(ctx, pad, by, W - pad * 2, 42, 8); ctx.stroke();
+    ctx.font = '9px Plus Jakarta Sans,sans-serif'; ctx.fillStyle = '#22d3a5'; ctx.textAlign = 'left';
+    ctx.fillText('Without RAG: LLM guesses from training data → may hallucinate', pad + 10, by + 16);
+    ctx.fillStyle = '#a78bfa';
+    ctx.fillText('With RAG: LLM reads your docs → answers grounded in facts + cites sources', pad + 10, by + 30);
+  }
+
+  draw();
+
+  runBtn?.addEventListener('click', () => {
+    if (interval) return;
+    activeStage = 0; draw();
+    interval = setInterval(() => {
+      activeStage++;
+      draw();
+      if (activeStage >= STAGES.length) { clearInterval(interval); interval = null; }
+    }, 900);
+  });
+
+  resetBtn?.addEventListener('click', () => {
+    if (interval) { clearInterval(interval); interval = null; }
+    activeStage = -1; draw();
+  });
+}
+
+/* ══════════ S17 — AI Safety & Hallucinations ══════════ */
+function initSafety() {
+  const container = document.getElementById('safetyCanvas');
+  const runBtn      = document.getElementById('btnSafetyRun');
+  const mitigateBtn = document.getElementById('btnSafetyMitigate');
+  const resetBtn    = document.getElementById('btnSafetyReset');
+  if (!container) return;
+
+  let state = 'idle'; // idle | hallucinating | mitigated
+
+  const HALLUCINATES = [
+    { text: 'The Eiffel Tower was built in', ok: true },
+    { text: '1887', ok: false, note: '← Wrong! Built 1887–1889, opened 1889' },
+    { text: 'by architect', ok: true },
+    { text: 'Gustave Eiffel Jr.', ok: false, note: '← Hallucinated! His name was Gustave Eiffel' },
+    { text: 'It stands', ok: true },
+    { text: '330 metres', ok: true },
+    { text: 'tall and has', ok: true },
+    { text: '1,789 steps', ok: false, note: '← Wrong! It has 1,665 steps' },
+  ];
+
+  const GROUNDED = [
+    { text: 'The Eiffel Tower was built in', ok: true },
+    { text: '1887–1889', ok: true, note: '✓ Source: doc_history.pdf p.2' },
+    { text: 'by architect', ok: true },
+    { text: 'Gustave Eiffel', ok: true, note: '✓ Source: doc_history.pdf p.2' },
+    { text: 'It stands', ok: true },
+    { text: '330 metres', ok: true },
+    { text: 'tall and has', ok: true },
+    { text: '1,665 steps', ok: true, note: '✓ Source: doc_facts.pdf p.1' },
+  ];
+
+  function draw() {
+    const { ctx, W, H } = initCanvas(container);
+    const halfW = W / 2 - 6, padX = 12, padY = 36;
+
+    // Headers
+    const labels = state === 'idle' ? ['LLM Response', 'LLM with RAG'] : state === 'hallucinating' ? ['LLM (No RAG)', 'LLM with RAG'] : ['LLM (No RAG)', 'LLM + RAG'];
+    const colors = ['#f87171', '#22d3a5'];
+
+    labels.forEach((label, side) => {
+      const x = side === 0 ? padX : halfW + padX + 12;
+      ctx.fillStyle = colors[side] + '12';
+      rr(ctx, x, padY, halfW, H - padY - 10, 10); ctx.fill();
+      ctx.strokeStyle = colors[side] + (state === 'idle' ? '25' : '40'); ctx.lineWidth = 1;
+      rr(ctx, x, padY, halfW, H - padY - 10, 10); ctx.stroke();
+
+      ctx.font = 'bold 10px Plus Jakarta Sans,sans-serif'; ctx.fillStyle = colors[side]; ctx.textAlign = 'center';
+      ctx.fillText(label, x + halfW / 2, padY - 8);
+
+      if (side === 0 && state !== 'idle') {
+        // Show hallucinating text
+        let lineY = padY + 18;
+        HALLUCINATES.forEach(chunk => {
+          const isErr = !chunk.ok;
+          const col = isErr && state === 'hallucinating' ? '#f87171' : 'rgba(255,255,255,0.55)';
+          ctx.font = (isErr && state === 'hallucinating' ? 'bold ' : '') + '9px Plus Jakarta Sans,sans-serif';
+          ctx.fillStyle = col; ctx.textAlign = 'left';
+          ctx.fillText(chunk.text, x + 8, lineY);
+          lineY += 16;
+          if (chunk.note && state === 'hallucinating') {
+            ctx.font = '8px JetBrains Mono,monospace'; ctx.fillStyle = '#f87171aa';
+            ctx.fillText(chunk.note, x + 8, lineY);
+            lineY += 14;
+          }
+        });
+        ctx.font = 'bold 9px Plus Jakarta Sans,sans-serif'; ctx.fillStyle = '#f87171'; ctx.textAlign = 'center';
+        ctx.fillText('⚠ 3 hallucinations detected', x + halfW / 2, H - 20);
+      } else if (side === 1 && state === 'mitigated') {
+        let lineY = padY + 18;
+        GROUNDED.forEach(chunk => {
+          ctx.font = '9px Plus Jakarta Sans,sans-serif';
+          ctx.fillStyle = 'rgba(255,255,255,0.8)'; ctx.textAlign = 'left';
+          ctx.fillText(chunk.text, x + 8, lineY);
+          lineY += 16;
+          if (chunk.note) {
+            ctx.font = '8px JetBrains Mono,monospace'; ctx.fillStyle = '#22d3a570';
+            ctx.fillText(chunk.note, x + 8, lineY);
+            lineY += 13;
+          }
+        });
+        ctx.font = 'bold 9px Plus Jakarta Sans,sans-serif'; ctx.fillStyle = '#22d3a5'; ctx.textAlign = 'center';
+        ctx.fillText('✓ All facts sourced — no hallucinations', x + halfW / 2, H - 20);
+      } else if (state === 'idle') {
+        ctx.font = '10px Plus Jakarta Sans,sans-serif'; ctx.fillStyle = '#56566e'; ctx.textAlign = 'center';
+        ctx.fillText(side === 0 ? 'Click "Show Hallucination"' : 'Click "Apply Mitigations"', x + halfW / 2, H / 2);
+        ctx.fillText(side === 0 ? 'to see a real example' : 'to see RAG in action', x + halfW / 2, H / 2 + 16);
+      }
+    });
+
+    // VS divider
+    ctx.font = 'bold 10px JetBrains Mono,monospace'; ctx.fillStyle = '#56566e'; ctx.textAlign = 'center';
+    ctx.fillText('VS', W / 2, H / 2);
+  }
+
+  draw();
+
+  runBtn?.addEventListener('click', () => {
+    state = 'hallucinating'; draw();
+  });
+  mitigateBtn?.addEventListener('click', () => {
+    state = 'mitigated'; draw();
+  });
+  resetBtn?.addEventListener('click', () => {
+    state = 'idle'; draw();
+  });
+}
+
+/* ══════════ S19 — AI Strategy Matrix ══════════ */
+function initStrategy() {
+  const container = document.getElementById('strategyCanvas');
+  if (!container) return;
+
+  const QUADRANTS = [
+    { label: 'Use an API',       sub: 'Off-the-shelf LLM\nvia OpenAI / Anthropic / Google',  color: '#22d3ee', x: 0, y: 1 }, // low diff, high data uniqueness
+    { label: 'Build & Own',      sub: 'Custom model on\nyour proprietary data',               color: '#fbbf24', x: 1, y: 1 }, // high diff, high data
+    { label: 'Prompt + API',     sub: 'Tune prompts, system\nmessage, few-shot examples',     color: '#a78bfa', x: 0, y: 0 }, // low diff, low data
+    { label: 'RAG or Fine-tune', sub: 'Index your data, or\nfine-tune a base model',          color: '#22d3a5', x: 1, y: 0 }, // high diff, low data
+  ];
+
+  let hovered = -1;
+  const { canvas, ctx, W, H } = initCanvas(container);
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    const pad = 52, gap = 10;
+    const qW = (W - pad * 2 - gap) / 2;
+    const qH = (H - pad * 2 - gap) / 2;
+
+    // Axis labels
+    ctx.font = 'bold 10px Plus Jakarta Sans,sans-serif'; ctx.fillStyle = '#56566e'; ctx.textAlign = 'center';
+    ctx.fillText('Data Uniqueness', W / 2, 14);
+    ctx.fillText('Low', pad + qW / 2, H - 4);
+    ctx.fillText('High', pad + gap + qW + qW / 2, H - 4);
+
+    ctx.save(); ctx.translate(12, H / 2); ctx.rotate(-Math.PI / 2);
+    ctx.fillText('Competitive Differentiation', 0, 0); ctx.restore();
+
+    ctx.font = '9px Plus Jakarta Sans,sans-serif';
+    ctx.save(); ctx.translate(12, pad + qH / 2 + 10); ctx.rotate(-Math.PI / 2);
+    ctx.fillText('Low', 0, 0); ctx.restore();
+    ctx.save(); ctx.translate(12, pad + qH * 1.5 + gap + 10); ctx.rotate(-Math.PI / 2);
+    ctx.fillText('High', 0, 0); ctx.restore();
+
+    // Draw quadrants
+    QUADRANTS.forEach((q, i) => {
+      const qx = pad + q.x * (qW + gap);
+      const qy = pad + (1 - q.y) * (qH + gap); // invert y (high at top)
+      const isH = i === hovered;
+
+      ctx.fillStyle = isH ? q.color + '22' : q.color + '0d';
+      rr(ctx, qx, qy, qW, qH, 10); ctx.fill();
+      ctx.strokeStyle = isH ? q.color : q.color + '40'; ctx.lineWidth = isH ? 1.5 : 1;
+      if (isH) { ctx.shadowColor = q.color; ctx.shadowBlur = 12; }
+      rr(ctx, qx, qy, qW, qH, 10); ctx.stroke(); ctx.shadowBlur = 0;
+
+      ctx.font = `bold ${isH ? 11 : 10}px Plus Jakarta Sans,sans-serif`;
+      ctx.fillStyle = q.color; ctx.textAlign = 'center';
+      ctx.fillText(q.label, qx + qW / 2, qy + qH * 0.38);
+
+      const sub = q.sub.split('\n');
+      sub.forEach((line, li) => {
+        ctx.font = `9px Plus Jakarta Sans,sans-serif`;
+        ctx.fillStyle = isH ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.3)';
+        ctx.fillText(line, qx + qW / 2, qy + qH * 0.38 + 18 + li * 14);
+      });
+    });
+
+    // Center intersection dot
+    ctx.beginPath(); ctx.arc(W / 2, H / 2, 5, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255,255,255,0.15)'; ctx.fill();
+  }
+
+  canvas.addEventListener('mousemove', e => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = (e.clientX - rect.left) * (canvas.width / rect.width) / dpr;
+    const my = (e.clientY - rect.top) * (canvas.height / rect.height) / dpr;
+    const pad = 52, gap = 10;
+    const qW = (W - pad * 2 - gap) / 2, qH = (H - pad * 2 - gap) / 2;
+    let found = -1;
+    QUADRANTS.forEach((q, i) => {
+      const qx = pad + q.x * (qW + gap), qy = pad + (1 - q.y) * (qH + gap);
+      if (mx >= qx && mx <= qx + qW && my >= qy && my <= qy + qH) found = i;
+    });
+    if (found !== hovered) { hovered = found; draw(); }
+  });
+  canvas.addEventListener('mouseleave', () => { hovered = -1; draw(); });
+  draw();
+}
+
 /* ══════════ INIT — trigger on scroll into view ══════════ */
 function onVisible(id, fn) {
   const el = document.getElementById(id);
@@ -1097,3 +1402,6 @@ onVisible('s9',  initAttention);
 onVisible('s10', initLLM);
 onVisible('s11', initDiffusion);
 onVisible('s13', initAgents);
+onVisible('s14', initRAG);
+onVisible('s17', initSafety);
+onVisible('s19', initStrategy);

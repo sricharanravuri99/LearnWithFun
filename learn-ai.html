@@ -9,37 +9,95 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="learn.css" />
 </head>
-<body>
+<body class="has-chapter-nav">
 
 <div class="scroll-progress"><div class="scroll-progress-fill" id="spFill"></div></div>
 
 <nav class="learn-topnav">
   <div class="learn-topnav-inner">
     <a href="index.html" class="learn-back">← Home</a>
-    <span class="learn-track-name">🧠 AI & Machine Learning — Complete Guide</span>
+    <span class="learn-track-name">🧠 AI &amp; Machine Learning</span>
     <a href="ai.html" class="learn-quiz-link">Take the Quiz →</a>
   </div>
 </nav>
 
-<aside class="nav-dots" id="navDots">
-  <a class="nav-dot active" href="#s1"  data-idx="0"><span class="dot-label">What is AI?</span></a>
-  <a class="nav-dot" href="#s2"  data-idx="1"><span class="dot-label">The Neuron</span></a>
-  <a class="nav-dot" href="#s3"  data-idx="2"><span class="dot-label">Neural Networks</span></a>
-  <a class="nav-dot" href="#s4"  data-idx="3"><span class="dot-label">Training Loop</span></a>
-  <a class="nav-dot" href="#s5"  data-idx="4"><span class="dot-label">Gradient Descent</span></a>
-  <a class="nav-dot" href="#s6"  data-idx="5"><span class="dot-label">Types of ML</span></a>
-  <a class="nav-dot" href="#s7"  data-idx="6"><span class="dot-label">Tokens</span></a>
-  <a class="nav-dot" href="#s8"  data-idx="7"><span class="dot-label">Embeddings</span></a>
-  <a class="nav-dot" href="#s9"  data-idx="8"><span class="dot-label">Transformers</span></a>
-  <a class="nav-dot" href="#s10" data-idx="9"><span class="dot-label">LLMs</span></a>
-  <a class="nav-dot" href="#s11" data-idx="10"><span class="dot-label">Generative AI</span></a>
-  <a class="nav-dot" href="#s12" data-idx="11"><span class="dot-label">Prompt Engineering</span></a>
-  <a class="nav-dot" href="#s13" data-idx="12"><span class="dot-label">AI Agents</span></a>
-  <a class="nav-dot" href="#s14" data-idx="13"><span class="dot-label">Real World AI</span></a>
-</aside>
+<!-- ══════════════════════════════════════
+     CHAPTER NAV BAR
+══════════════════════════════════════ -->
+<nav class="chapter-nav" id="chapterNav">
+  <a class="ch-tab active" data-chapter="0" data-color="cyan" href="#ch0">
+    <span class="ch-num">01</span> Foundations
+  </a>
+  <a class="ch-tab" data-chapter="1" data-color="purple" href="#ch1">
+    <span class="ch-num">02</span> Modern AI
+  </a>
+  <a class="ch-tab" data-chapter="2" data-color="green" href="#ch2">
+    <span class="ch-num">03</span> Building with AI
+  </a>
+  <a class="ch-tab" data-chapter="3" data-color="orange" href="#ch3">
+    <span class="ch-num">04</span> Leadership
+  </a>
+  <span class="ch-progress-pill" id="chProgressPill">1 / 20</span>
+</nav>
+
+<!-- ══════════════════════════════════════
+     SECTION NAVIGATOR (slide-in right)
+══════════════════════════════════════ -->
+<div class="section-nav" id="sectionNav">
+  <button class="snav-toggle" id="snavToggle" aria-label="Toggle section list">
+    <div class="snav-toggle-dot"></div>
+    <div class="snav-toggle-dot"></div>
+    <div class="snav-toggle-dot"></div>
+  </button>
+  <div class="snav-panel" id="snavPanel">
+    <div class="snav-ch-label"><div class="snav-ch-dot" style="background:#22d3ee"></div>Foundations</div>
+    <a class="snav-item active" href="#s1"><div class="snav-dot"></div>What is AI?</a>
+    <a class="snav-item" href="#s2"><div class="snav-dot"></div>The Neuron</a>
+    <a class="snav-item" href="#s3"><div class="snav-dot"></div>Neural Networks</a>
+    <a class="snav-item" href="#s4"><div class="snav-dot"></div>Training Loop</a>
+    <a class="snav-item" href="#s5"><div class="snav-dot"></div>Gradient Descent</a>
+    <a class="snav-item" href="#s6"><div class="snav-dot"></div>Types of ML</a>
+    <div class="snav-ch-label"><div class="snav-ch-dot" style="background:#a78bfa"></div>Modern AI</div>
+    <a class="snav-item" href="#s7"><div class="snav-dot"></div>Tokens</a>
+    <a class="snav-item" href="#s8"><div class="snav-dot"></div>Embeddings</a>
+    <a class="snav-item" href="#s9"><div class="snav-dot"></div>Transformers</a>
+    <a class="snav-item" href="#s10"><div class="snav-dot"></div>LLMs</a>
+    <a class="snav-item" href="#s11"><div class="snav-dot"></div>Generative AI</a>
+    <a class="snav-item" href="#s12"><div class="snav-dot"></div>Prompt Engineering</a>
+    <a class="snav-item" href="#s13"><div class="snav-dot"></div>AI Agents</a>
+    <div class="snav-ch-label"><div class="snav-ch-dot" style="background:#22d3a5"></div>Building with AI</div>
+    <a class="snav-item" href="#s14"><div class="snav-dot"></div>RAG</a>
+    <a class="snav-item" href="#s15"><div class="snav-dot"></div>Fine-tuning</a>
+    <a class="snav-item" href="#s16"><div class="snav-dot"></div>Multimodal AI</a>
+    <div class="snav-ch-label"><div class="snav-ch-dot" style="background:#fbbf24"></div>Leadership</div>
+    <a class="snav-item" href="#s17"><div class="snav-dot"></div>AI Safety</a>
+    <a class="snav-item" href="#s18"><div class="snav-dot"></div>Ethics &amp; Governance</a>
+    <a class="snav-item" href="#s19"><div class="snav-dot"></div>AI Strategy</a>
+    <a class="snav-item" href="#s20"><div class="snav-dot"></div>AI Landscape</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     CHAPTER 0 — FOUNDATIONS
+══════════════════════════════════════════════════════ -->
+<section class="chapter-intro" id="ch0" data-chapter="0">
+  <div class="ch-intro-inner anim-in">
+    <div class="ch-intro-tag"><span class="ch-num">CHAPTER 01</span></div>
+    <h2>Foundations of <span class="accent">AI</span></h2>
+    <p>Understand what AI really is, how neural networks think, and why training works — the mental models every IT leader needs before evaluating any AI product or vendor.</p>
+    <div class="ch-topics-grid">
+      <a class="ch-topic-chip" href="#s1"><span class="ch-topic-num">01</span>What is AI?</a>
+      <a class="ch-topic-chip" href="#s2"><span class="ch-topic-num">02</span>The Neuron</a>
+      <a class="ch-topic-chip" href="#s3"><span class="ch-topic-num">03</span>Neural Networks</a>
+      <a class="ch-topic-chip" href="#s4"><span class="ch-topic-num">04</span>Training Loop</a>
+      <a class="ch-topic-chip" href="#s5"><span class="ch-topic-num">05</span>Gradient Descent</a>
+      <a class="ch-topic-chip" href="#s6"><span class="ch-topic-num">06</span>Types of ML</a>
+    </div>
+  </div>
+</section>
 
 <!-- ═══════ S1: WHAT IS AI ═══════ -->
-<section class="learn-section" id="s1" data-dot="0" data-accent="purple">
+<section class="learn-section" id="s1" data-chapter="0" data-accent="purple">
   <div class="s-text anim-in">
     <div class="s-num">01 / What is AI?</div>
     <h2>AI doesn't follow rules.<br><span class="accent">It discovers them.</span></h2>
@@ -61,7 +119,7 @@
 </section>
 
 <!-- ═══════ S2: THE NEURON ═══════ -->
-<section class="learn-section flip" id="s2" data-dot="1" data-accent="cyan">
+<section class="learn-section flip" id="s2" data-chapter="0" data-accent="cyan">
   <div class="s-text anim-in">
     <div class="s-num">02 / The Building Block</div>
     <h2>One neuron,<br><span class="accent">one decision.</span></h2>
@@ -83,7 +141,7 @@
 </section>
 
 <!-- ═══════ S3: NEURAL NETWORKS ═══════ -->
-<section class="learn-section" id="s3" data-dot="2" data-accent="purple">
+<section class="learn-section" id="s3" data-chapter="0" data-accent="purple">
   <div class="s-text anim-in">
     <div class="s-num">03 / Layers of Intelligence</div>
     <h2>Stack neurons.<br><span class="accent">Get intelligence.</span></h2>
@@ -110,7 +168,7 @@
 </section>
 
 <!-- ═══════ S4: TRAINING LOOP ═══════ -->
-<section class="learn-section flip" id="s4" data-dot="3" data-accent="green">
+<section class="learn-section flip" id="s4" data-chapter="0" data-accent="green">
   <div class="s-text anim-in">
     <div class="s-num">04 / How AI Learns</div>
     <h2>Make a guess.<br>Measure the mistake.<br><span class="accent">Adjust. Repeat.</span></h2>
@@ -141,7 +199,7 @@
 </section>
 
 <!-- ═══════ S5: GRADIENT DESCENT ═══════ -->
-<section class="learn-section" id="s5" data-dot="4" data-accent="orange">
+<section class="learn-section" id="s5" data-chapter="0" data-accent="orange">
   <div class="s-text anim-in">
     <div class="s-num">05 / Finding the Minimum</div>
     <h2>Roll downhill<br>until you find<br><span class="accent">the valley.</span></h2>
@@ -173,7 +231,7 @@
 </section>
 
 <!-- ═══════ S6: TYPES OF ML ═══════ -->
-<section class="learn-section full-center" id="s6" data-dot="5" data-accent="pink">
+<section class="learn-section full-center" id="s6" data-chapter="0" data-accent="pink">
   <div class="s-text anim-in" style="max-width:760px;margin:0 auto;text-align:center">
     <div class="s-num" style="text-align:center">06 / Learning Styles</div>
     <h2>Three ways <span class="accent">machines learn</span></h2>
@@ -212,8 +270,28 @@
   </div>
 </section>
 
+<!-- ══════════════════════════════════════════════════════
+     CHAPTER 1 — MODERN AI
+══════════════════════════════════════════════════════ -->
+<section class="chapter-intro" id="ch1" data-chapter="1">
+  <div class="ch-intro-inner anim-in">
+    <div class="ch-intro-tag"><span class="ch-num">CHAPTER 02</span></div>
+    <h2>The <span class="accent">Modern AI</span> Stack</h2>
+    <p>How tokens, embeddings, and Transformers combine to produce LLMs — and how LLMs become the generative AI tools you use every day.</p>
+    <div class="ch-topics-grid">
+      <a class="ch-topic-chip" href="#s7"><span class="ch-topic-num">07</span>Tokens</a>
+      <a class="ch-topic-chip" href="#s8"><span class="ch-topic-num">08</span>Embeddings</a>
+      <a class="ch-topic-chip" href="#s9"><span class="ch-topic-num">09</span>Transformers &amp; Attention</a>
+      <a class="ch-topic-chip" href="#s10"><span class="ch-topic-num">10</span>LLMs</a>
+      <a class="ch-topic-chip" href="#s11"><span class="ch-topic-num">11</span>Generative AI</a>
+      <a class="ch-topic-chip" href="#s12"><span class="ch-topic-num">12</span>Prompt Engineering</a>
+      <a class="ch-topic-chip" href="#s13"><span class="ch-topic-num">13</span>AI Agents</a>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════ S7: TOKENS ═══════ -->
-<section class="learn-section flip" id="s7" data-dot="6" data-accent="orange">
+<section class="learn-section flip" id="s7" data-chapter="1" data-accent="orange">
   <div class="s-text anim-in">
     <div class="s-num">07 / Tokens &amp; Tokenization</div>
     <h2>LLMs don't read<br>words. They read<br><span class="accent">tokens.</span></h2>
@@ -248,7 +326,7 @@
 </section>
 
 <!-- ═══════ S8: EMBEDDINGS ═══════ -->
-<section class="learn-section" id="s8" data-dot="7" data-accent="purple">
+<section class="learn-section" id="s8" data-chapter="1" data-accent="purple">
   <div class="s-text anim-in">
     <div class="s-num">08 / Embeddings &amp; Meaning</div>
     <h2>Words as<br>coordinates in<br><span class="accent">meaning-space.</span></h2>
@@ -278,7 +356,7 @@
 </section>
 
 <!-- ═══════ S9: TRANSFORMERS & ATTENTION ═══════ -->
-<section class="learn-section flip" id="s9" data-dot="8" data-accent="cyan">
+<section class="learn-section flip" id="s9" data-chapter="1" data-accent="cyan">
   <div class="s-text anim-in">
     <div class="s-num">09 / Transformers &amp; Attention</div>
     <h2>Every word<br>watches every<br><span class="accent">other word.</span></h2>
@@ -303,7 +381,7 @@
 </section>
 
 <!-- ═══════ S10: LLMs ═══════ -->
-<section class="learn-section" id="s10" data-dot="9" data-accent="green">
+<section class="learn-section" id="s10" data-chapter="1" data-accent="green">
   <div class="s-text anim-in">
     <div class="s-num">10 / Large Language Models</div>
     <h2>Predict the<br>next word.<br><span class="accent">Trillions of times.</span></h2>
@@ -340,7 +418,7 @@
 </section>
 
 <!-- ═══════ S11: GENERATIVE AI ═══════ -->
-<section class="learn-section flip" id="s11" data-dot="10" data-accent="pink">
+<section class="learn-section flip" id="s11" data-chapter="1" data-accent="pink">
   <div class="s-text anim-in">
     <div class="s-num">11 / Generative AI</div>
     <h2>AI that creates,<br>not just<br><span class="accent">classifies.</span></h2>
@@ -368,7 +446,7 @@
 </section>
 
 <!-- ═══════ S12: PROMPT ENGINEERING ═══════ -->
-<section class="learn-section full-center" id="s12" data-dot="11" data-accent="orange">
+<section class="learn-section full-center" id="s12" data-chapter="1" data-accent="orange">
   <div class="s-text anim-in" style="max-width:760px;margin:0 auto;text-align:center">
     <div class="s-num" style="text-align:center">12 / Prompt Engineering</div>
     <h2>How you ask matters<br><span class="accent">as much as what you ask.</span></h2>
@@ -415,7 +493,7 @@ Let's think step by step.</div>
 </section>
 
 <!-- ═══════ S13: AI AGENTS ═══════ -->
-<section class="learn-section" id="s13" data-dot="12" data-accent="red">
+<section class="learn-section" id="s13" data-chapter="1" data-accent="red">
   <div class="s-text anim-in">
     <div class="s-num">13 / Agentic AI</div>
     <h2>AI that acts,<br>not just<br><span class="accent">answers.</span></h2>
@@ -444,12 +522,269 @@ Let's think step by step.</div>
   </div>
 </section>
 
-<!-- ═══════ S14: REAL WORLD AI ═══════ -->
-<section class="learn-section full-center" id="s14" data-dot="13" data-accent="green">
+<!-- ══════════════════════════════════════════════════════
+     CHAPTER 2 — BUILDING WITH AI
+══════════════════════════════════════════════════════ -->
+<section class="chapter-intro" id="ch2" data-chapter="2">
+  <div class="ch-intro-inner anim-in">
+    <div class="ch-intro-tag"><span class="ch-num">CHAPTER 03</span></div>
+    <h2>Building <span class="accent">with AI</span></h2>
+    <p>Move from understanding AI to deploying it. Learn the three core patterns every engineering team uses — and when to reach for each one.</p>
+    <div class="ch-topics-grid">
+      <a class="ch-topic-chip" href="#s14"><span class="ch-topic-num">14</span>RAG</a>
+      <a class="ch-topic-chip" href="#s15"><span class="ch-topic-num">15</span>Fine-tuning</a>
+      <a class="ch-topic-chip" href="#s16"><span class="ch-topic-num">16</span>Multimodal AI</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ S14: RAG ═══════ -->
+<section class="learn-section flip" id="s14" data-chapter="2" data-accent="cyan">
+  <div class="s-text anim-in">
+    <div class="s-num">14 / Retrieval-Augmented Generation</div>
+    <h2>Your documents,<br>inside the<br><span class="accent">AI's brain.</span></h2>
+    <p class="s-lead">RAG connects LLMs to your own knowledge base. Instead of relying on static training data, RAG retrieves relevant documents at inference time and feeds them into the context window — giving fresh, grounded, fact-based answers.</p>
+    <div class="analogy-box">
+      <span class="analogy-icon">📖</span>
+      <p><strong>Analogy — Open-book exam:</strong> A vanilla LLM is closed-book — it answers entirely from memory. RAG is open-book — it can look up your documents before answering. Same intelligence, dramatically better accuracy on your domain-specific questions.</p>
+    </div>
+    <div class="key-insight">
+      <span>💡 The 4-step RAG pipeline</span>
+      <p><strong>1. Index:</strong> Embed your docs into a vector database (one-time setup).<br>
+      <strong>2. Query:</strong> Embed the user's question into the same vector space.<br>
+      <strong>3. Retrieve:</strong> Find the top-k most similar document chunks.<br>
+      <strong>4. Generate:</strong> Send chunks + question to LLM → grounded answer.<br><br>
+      Used by: Perplexity, NotebookLM, Copilot for Microsoft 365, Salesforce Einstein.</p>
+    </div>
+  </div>
+  <div class="s-visual anim-in delay">
+    <div class="visual-label">RAG pipeline — click to step through each stage</div>
+    <div class="canvas-wrap" id="ragCanvas" style="min-height:340px"></div>
+    <div class="ctrl-bar" style="margin-top:10px">
+      <button class="btn-learn primary sm" id="btnRagRun">▶ Run RAG Query</button>
+      <button class="btn-learn ghost sm" id="btnRagReset">↺ Reset</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ S15: FINE-TUNING ═══════ -->
+<section class="learn-section full-center" id="s15" data-chapter="2" data-accent="purple">
+  <div class="s-text anim-in" style="max-width:760px;margin:0 auto;text-align:center">
+    <div class="s-num" style="text-align:center">15 / Fine-tuning &amp; Customisation</div>
+    <h2>When prompting<br>isn't enough.<br><span class="accent">Bake it in.</span></h2>
+    <p class="s-lead" style="max-width:580px;margin:0 auto">Three levels of customisation — pick the right one for your problem. Over-engineering costs money; under-engineering costs quality.</p>
+  </div>
+  <div class="anim-in delay" style="width:100%">
+    <div class="compare-grid cols-3">
+      <div class="compare-card" style="border-color:rgba(34,211,238,0.2)">
+        <div class="cc-icon">✍️</div>
+        <h4>Prompt Engineering</h4>
+        <p>Customise behaviour at inference time through system prompts, examples, and instructions. No training required. Instant iteration.</p>
+        <div style="margin-top:12px;background:rgba(0,0,0,0.3);border-radius:10px;padding:10px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#22d3ee">
+          Cost: $0 extra<br>Speed: instant<br>Data needed: none
+        </div>
+        <div class="cc-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.3)">Use when: behaviour is the goal</div>
+      </div>
+      <div class="compare-card" style="border-color:rgba(124,111,255,0.2)">
+        <div class="cc-icon">🔍</div>
+        <h4>RAG</h4>
+        <p>Add knowledge without retraining. Embed your docs into a vector DB and retrieve relevant chunks at query time. Great for dynamic, frequently-changing data.</p>
+        <div style="margin-top:12px;background:rgba(0,0,0,0.3);border-radius:10px;padding:10px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#a78bfa">
+          Cost: low (infra)<br>Speed: hours to days<br>Data needed: documents
+        </div>
+        <div class="cc-tag" style="color:#a78bfa;border-color:rgba(124,111,255,0.3)">Use when: knowledge is the goal</div>
+      </div>
+      <div class="compare-card" style="border-color:rgba(251,191,36,0.2)">
+        <div class="cc-icon">🔧</div>
+        <h4>Fine-tuning</h4>
+        <p>Continue training on your data — bake your style, domain knowledge, or format into the model weights. Expensive but produces specialist models that consistently follow your patterns.</p>
+        <div style="margin-top:12px;background:rgba(0,0,0,0.3);border-radius:10px;padding:10px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#fbbf24">
+          Cost: medium–high<br>Speed: days to weeks<br>Data: 1k–100k examples
+        </div>
+        <div class="cc-tag" style="color:#fbbf24;border-color:rgba(251,191,36,0.3)">Use when: style/format is the goal</div>
+      </div>
+    </div>
+    <div class="key-insight" style="max-width:700px;margin:20px auto 0;text-align:left">
+      <span>💡 The decision rule</span>
+      <p><strong>Try prompting first.</strong> 80% of problems are solved here.<br>
+      <strong>Add RAG</strong> if the model lacks domain knowledge or data goes stale.<br>
+      <strong>Fine-tune</strong> only if you need consistent style, format, or specialty responses at scale.<br>
+      <strong>Build from scratch</strong> almost never — Foundation Model APIs are too good and cheap.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ S16: MULTIMODAL AI ═══════ -->
+<section class="learn-section" id="s16" data-chapter="2" data-accent="green">
+  <div class="s-text anim-in">
+    <div class="s-num">16 / Multimodal AI</div>
+    <h2>AI that sees,<br>hears, and<br><span class="accent">understands all.</span></h2>
+    <p class="s-lead">Modern AI isn't just text. Multimodal models process and generate across text, images, audio, video, and code — often simultaneously. GPT-4o can see a photo and answer questions about it. Gemini can watch a video and summarise it. This transforms what's possible in enterprise AI.</p>
+    <div class="analogy-box">
+      <span class="analogy-icon">🧠</span>
+      <p><strong>Analogy — The human brain:</strong> You don't have separate brains for reading, listening, and watching. One brain integrates all senses into unified understanding. Multimodal AI does the same — a single model that sees a screenshot, hears the audio narration, and reads the transcript simultaneously.</p>
+    </div>
+    <div class="key-insight">
+      <span>💡 Enterprise use cases by modality</span>
+      <p><strong>Vision:</strong> Manufacturing quality control, medical imaging, document understanding (invoices, contracts), reading dashboards and diagrams.<br>
+      <strong>Audio:</strong> Call centre transcription &amp; sentiment analysis, meeting summarisation, voice interfaces.<br>
+      <strong>Video:</strong> Security monitoring, training content analysis, sports analytics.<br>
+      <strong>Cross-modal:</strong> "Describe this chart" (vision→text), "Read this PDF aloud" (text→speech).</p>
+    </div>
+  </div>
+  <div class="s-visual anim-in delay">
+    <div class="anim-in delay" style="width:100%">
+      <div class="compare-grid cols-2" style="gap:12px">
+        <div class="compare-card" style="border-color:rgba(34,211,238,0.2);padding:18px">
+          <div style="font-size:1.8rem;margin-bottom:8px">👁️</div>
+          <h4 style="font-size:0.9rem;margin-bottom:6px;color:#22d3ee">Vision</h4>
+          <p style="font-size:0.78rem;color:var(--text-2)">Read images, charts, diagrams, screenshots, X-rays, satellite imagery</p>
+          <div class="cc-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.3);margin-top:10px">GPT-4o · Claude · Gemini</div>
+        </div>
+        <div class="compare-card" style="border-color:rgba(167,139,250,0.2);padding:18px">
+          <div style="font-size:1.8rem;margin-bottom:8px">🎧</div>
+          <h4 style="font-size:0.9rem;margin-bottom:6px;color:#a78bfa">Audio</h4>
+          <p style="font-size:0.78rem;color:var(--text-2)">Transcribe calls, detect emotion, identify speakers, analyse music</p>
+          <div class="cc-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.3);margin-top:10px">Whisper · Gemini · GPT-4o</div>
+        </div>
+        <div class="compare-card" style="border-color:rgba(34,211,165,0.2);padding:18px">
+          <div style="font-size:1.8rem;margin-bottom:8px">🎬</div>
+          <h4 style="font-size:0.9rem;margin-bottom:6px;color:#22d3a5">Video</h4>
+          <p style="font-size:0.78rem;color:var(--text-2)">Summarise recordings, monitor facilities, analyse sports, understand sequences</p>
+          <div class="cc-tag" style="color:#22d3a5;border-color:rgba(34,211,165,0.3);margin-top:10px">Gemini 1.5 · GPT-4o</div>
+        </div>
+        <div class="compare-card" style="border-color:rgba(251,191,36,0.2);padding:18px">
+          <div style="font-size:1.8rem;margin-bottom:8px">💻</div>
+          <h4 style="font-size:0.9rem;margin-bottom:6px;color:#fbbf24">Code &amp; Data</h4>
+          <p style="font-size:0.78rem;color:var(--text-2)">Write, debug, review code; analyse spreadsheets; generate SQL from natural language</p>
+          <div class="cc-tag" style="color:#fbbf24;border-color:rgba(251,191,36,0.3);margin-top:10px">Copilot · Cursor · Claude</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     CHAPTER 3 — AI LEADERSHIP
+══════════════════════════════════════════════════════ -->
+<section class="chapter-intro" id="ch3" data-chapter="3">
+  <div class="ch-intro-inner anim-in">
+    <div class="ch-intro-tag"><span class="ch-num">CHAPTER 04</span></div>
+    <h2>AI <span class="accent">Leadership</span></h2>
+    <p>The decisions only you can make — safety guardrails, governance frameworks, build-vs-buy choices, and how to navigate the full AI landscape as a technology leader.</p>
+    <div class="ch-topics-grid">
+      <a class="ch-topic-chip" href="#s17"><span class="ch-topic-num">17</span>AI Safety &amp; Hallucinations</a>
+      <a class="ch-topic-chip" href="#s18"><span class="ch-topic-num">18</span>Ethics &amp; Governance</a>
+      <a class="ch-topic-chip" href="#s19"><span class="ch-topic-num">19</span>AI Strategy</a>
+      <a class="ch-topic-chip" href="#s20"><span class="ch-topic-num">20</span>The AI Landscape</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ S17: AI SAFETY & HALLUCINATIONS ═══════ -->
+<section class="learn-section flip" id="s17" data-chapter="3" data-accent="red">
+  <div class="s-text anim-in">
+    <div class="s-num">17 / AI Safety &amp; Hallucinations</div>
+    <h2>Confident.<br>Plausible.<br><span class="accent">Sometimes wrong.</span></h2>
+    <p class="s-lead">LLMs hallucinate — they generate plausible-sounding but factually incorrect content with full confidence. This isn't a bug to be fixed; it's a fundamental property of statistical text generation. Every IT leader deploying AI must build mitigation strategies around it.</p>
+    <div class="analogy-box">
+      <span class="analogy-icon">🤝</span>
+      <p><strong>Analogy — The brilliant intern who never says "I don't know":</strong> Instead of admitting ignorance, they give you a confident, well-structured, completely wrong answer. The writing looks professional, the logic sounds right — but the facts are invented. Always verify important claims independently.</p>
+    </div>
+    <div class="key-insight">
+      <span>💡 5 failure modes to design around</span>
+      <p><strong>1. Hallucination:</strong> Fabricates facts, citations, code, people — with confidence.<br>
+      <strong>2. Jailbreaks:</strong> Crafted prompts bypass safety guardrails to elicit harmful content.<br>
+      <strong>3. Prompt Injection:</strong> Malicious content in documents hijacks model behaviour.<br>
+      <strong>4. Data Poisoning:</strong> Corrupted training data creates hidden biases or backdoors.<br>
+      <strong>5. Distribution Shift:</strong> Model trained on 2023 data fails on 2025 scenarios.<br><br>
+      <strong>Mitigations:</strong> RAG with source citations, human review loops, output validators, rate limits, and clear AI disclosure in user-facing products.</p>
+    </div>
+  </div>
+  <div class="s-visual anim-in delay">
+    <div class="canvas-wrap" id="safetyCanvas" style="min-height:340px"></div>
+    <div class="ctrl-bar" style="margin-top:10px">
+      <button class="btn-learn primary sm" id="btnSafetyRun">▶ Show Hallucination</button>
+      <button class="btn-learn ghost sm" id="btnSafetyMitigate">🛡 Apply Mitigations</button>
+      <button class="btn-learn ghost sm" id="btnSafetyReset">↺ Reset</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ S18: AI ETHICS & GOVERNANCE ═══════ -->
+<section class="learn-section full-center" id="s18" data-chapter="3" data-accent="orange">
+  <div class="s-text anim-in" style="max-width:760px;margin:0 auto;text-align:center">
+    <div class="s-num" style="text-align:center">18 / AI Ethics &amp; Governance</div>
+    <h2>Who is accountable<br>when <span class="accent">AI fails?</span></h2>
+    <p class="s-lead" style="max-width:580px;margin:0 auto">AI ethics isn't abstract philosophy — it's risk management. The EU AI Act, US AI Executive Order, and ISO 42001 are creating real compliance requirements. IT leaders must build governance frameworks before auditors do it for them.</p>
+  </div>
+  <div class="anim-in delay" style="width:100%">
+    <div class="compare-grid cols-2" style="margin-bottom:20px">
+      <div class="compare-card" style="border-color:rgba(248,113,113,0.25)">
+        <div class="cc-icon" style="background:rgba(248,113,113,0.1)">🚫</div>
+        <h4 style="color:#f87171">Unacceptable Risk (EU AI Act)</h4>
+        <p>Prohibited outright. AI that manipulates behaviour, social scoring by governments, real-time biometric surveillance in public, exploitation of vulnerabilities.</p>
+        <div class="cc-tag" style="color:#f87171;border-color:rgba(248,113,113,0.3)">Action: never deploy</div>
+      </div>
+      <div class="compare-card" style="border-color:rgba(251,191,36,0.25)">
+        <div class="cc-icon" style="background:rgba(251,191,36,0.1)">⚠️</div>
+        <h4 style="color:#fbbf24">High Risk</h4>
+        <p>HR decisions, loan approvals, medical diagnosis, critical infrastructure, law enforcement tools. Requires conformity assessments, audit logs, human oversight, transparency.</p>
+        <div class="cc-tag" style="color:#fbbf24;border-color:rgba(251,191,36,0.3)">Action: formal compliance process</div>
+      </div>
+      <div class="compare-card" style="border-color:rgba(34,211,238,0.25)">
+        <div class="cc-icon" style="background:rgba(34,211,238,0.1)">ℹ️</div>
+        <h4 style="color:#22d3ee">Limited Risk</h4>
+        <p>Chatbots, AI-generated content, emotion recognition. Must disclose to users that they are interacting with AI. Transparency obligations.</p>
+        <div class="cc-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.3)">Action: disclose AI involvement</div>
+      </div>
+      <div class="compare-card" style="border-color:rgba(34,211,165,0.25)">
+        <div class="cc-icon" style="background:rgba(34,211,165,0.1)">✅</div>
+        <h4 style="color:#22d3a5">Minimal Risk</h4>
+        <p>Spam filters, AI video games, AI-powered search, recommendations. No specific obligations. Good practice to document anyway.</p>
+        <div class="cc-tag" style="color:#22d3a5;border-color:rgba(34,211,165,0.3)">Action: document &amp; monitor</div>
+      </div>
+    </div>
+    <div class="key-insight" style="max-width:700px;margin:0 auto;text-align:left">
+      <span>💡 The EPIC framework for responsible AI</span>
+      <p><strong>E — Explainability:</strong> Can you explain why the model made a decision? Required for high-risk use cases.<br>
+      <strong>P — Privacy:</strong> Is training data properly consented? Does the model memorise PII?<br>
+      <strong>I — Inclusivity:</strong> Does bias in training data produce discriminatory outputs for some groups?<br>
+      <strong>C — Compliance:</strong> EU AI Act, GDPR, sector-specific rules (healthcare HIPAA, finance regulations).<br><br>
+      <strong>Practical first step:</strong> Build an AI use case register — what AI is being used, risk tier, data used, human oversight mechanism, and review cadence.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ S19: AI STRATEGY & BUILD VS BUY ═══════ -->
+<section class="learn-section" id="s19" data-chapter="3" data-accent="purple">
+  <div class="s-text anim-in">
+    <div class="s-num">19 / AI Strategy for Leaders</div>
+    <h2>Build, buy,<br>partner, or<br><span class="accent">wait?</span></h2>
+    <p class="s-lead">Most organisations waste money building what they could buy, and waste opportunity buying what they should build. The decision is straightforward once you understand the two dimensions: competitive differentiation and data uniqueness.</p>
+    <div class="analogy-box">
+      <span class="analogy-icon">♟️</span>
+      <p><strong>Analogy — Office real estate strategy:</strong> You don't build your own office towers (commodity) — you rent or buy existing ones. But your headquarters design, brand experience, and proprietary trading floor layout? You own those. Apply the same logic to AI.</p>
+    </div>
+    <div class="key-insight">
+      <span>💡 The AI investment quadrant</span>
+      <p><strong>Commodity + Generic data → Use an API:</strong> Customer service chatbot, internal FAQ, code review assistant. GPT-4 via API is cheaper and better than anything you'd build.<br><br>
+      <strong>Commodity + Proprietary data → RAG or fine-tune on API:</strong> Company knowledge base, internal policy assistant. Your data is the differentiation, not the model.<br><br>
+      <strong>Core differentiation + Generic data → Fine-tune OSS:</strong> Specialised legal analysis, domain-specific classification. Own the model, use open-source foundations.<br><br>
+      <strong>Core differentiation + Proprietary data → Build &amp; own:</strong> Only when model capability IS the product (e.g., you're an AI company). Rare. Expensive. High-risk.</p>
+    </div>
+  </div>
+  <div class="s-visual anim-in delay">
+    <div class="canvas-wrap" id="strategyCanvas" style="min-height:340px"></div>
+  </div>
+</section>
+
+<!-- ═══════ S20: THE AI LANDSCAPE ═══════ -->
+<section class="learn-section full-center" id="s20" data-chapter="3" data-accent="green">
   <div class="s-text anim-in" style="text-align:center;max-width:700px;margin:0 auto">
-    <div class="s-num" style="text-align:center">14 / The AI Landscape</div>
+    <div class="s-num" style="text-align:center">20 / The Complete AI Landscape</div>
     <h2>Now you can trace<br><span class="accent">how everything connects</span></h2>
-    <p class="s-lead" style="margin:0 auto;max-width:540px">Every AI product you use daily maps directly to the concepts you just learned. Here's the complete picture.</p>
+    <p class="s-lead" style="margin:0 auto;max-width:540px">Every AI product you use or evaluate maps directly to the concepts you just learned. Here's the full picture.</p>
   </div>
   <div class="anim-in delay" style="width:100%">
     <div class="compare-grid cols-2">
@@ -457,7 +792,7 @@ Let's think step by step.</div>
         <span style="font-size:2rem;flex-shrink:0">🗣️</span>
         <div>
           <h4>ChatGPT / Claude / Gemini</h4>
-          <p>Transformer LLMs trained on next-token prediction. Fine-tuned with RLHF (Reinforcement Learning from Human Feedback). Trillions of parameters.</p>
+          <p>Transformer LLMs trained on next-token prediction. Fine-tuned with RLHF (Reinforcement Learning from Human Feedback). Trillions of parameters. Context windows of 100k–1M tokens.</p>
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:8px">
             <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(124,111,255,0.15);color:#a78bfa;font-weight:700">Transformer</span>
             <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(124,111,255,0.15);color:#a78bfa;font-weight:700">LLM</span>
@@ -478,6 +813,18 @@ Let's think step by step.</div>
         </div>
       </div>
       <div class="compare-card" style="display:flex;gap:16px;align-items:flex-start">
+        <span style="font-size:2rem;flex-shrink:0">🔎</span>
+        <div>
+          <h4>Perplexity / ChatGPT Search / NotebookLM</h4>
+          <p>RAG — embeddings index documents, semantic search finds relevant chunks, LLM generates answers grounded in retrieved facts. Reduces hallucination significantly.</p>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:8px">
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(34,211,238,0.15);color:#22d3ee;font-weight:700">Embeddings</span>
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(34,211,238,0.15);color:#22d3ee;font-weight:700">RAG</span>
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(34,211,238,0.15);color:#22d3ee;font-weight:700">LLM</span>
+          </div>
+        </div>
+      </div>
+      <div class="compare-card" style="display:flex;gap:16px;align-items:flex-start">
         <span style="font-size:2rem;flex-shrink:0">💻</span>
         <div>
           <h4>GitHub Copilot / Cursor / Devin</h4>
@@ -485,18 +832,31 @@ Let's think step by step.</div>
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:8px">
             <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(34,211,165,0.15);color:#22d3a5;font-weight:700">LLM + Code</span>
             <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(34,211,165,0.15);color:#22d3a5;font-weight:700">Agents</span>
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(34,211,165,0.15);color:#22d3a5;font-weight:700">Fine-tuning</span>
           </div>
         </div>
       </div>
       <div class="compare-card" style="display:flex;gap:16px;align-items:flex-start">
-        <span style="font-size:2rem;flex-shrink:0">🔎</span>
+        <span style="font-size:2rem;flex-shrink:0">🏢</span>
         <div>
-          <h4>Perplexity / ChatGPT Search / NotebookLM</h4>
-          <p>RAG (Retrieval Augmented Generation) — embeddings index documents, semantic search finds relevant chunks, LLM generates answers grounded in retrieved facts.</p>
+          <h4>Microsoft Copilot 365 / Salesforce Einstein</h4>
+          <p>Enterprise AI — LLMs fine-tuned on business domains + RAG over company data + permission-aware access. High-risk use cases with governance guardrails built in.</p>
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:8px">
-            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(34,211,238,0.15);color:#22d3ee;font-weight:700">Embeddings</span>
-            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(34,211,238,0.15);color:#22d3ee;font-weight:700">RAG</span>
-            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(34,211,238,0.15);color:#22d3ee;font-weight:700">LLM</span>
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(251,191,36,0.15);color:#fbbf24;font-weight:700">RAG</span>
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(251,191,36,0.15);color:#fbbf24;font-weight:700">Fine-tuning</span>
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(251,191,36,0.15);color:#fbbf24;font-weight:700">Governance</span>
+          </div>
+        </div>
+      </div>
+      <div class="compare-card" style="display:flex;gap:16px;align-items:flex-start">
+        <span style="font-size:2rem;flex-shrink:0">🤖</span>
+        <div>
+          <h4>AutoGPT / Claude Code / Devin</h4>
+          <p>Full agentic systems — an LLM that plans, uses tools, writes and executes code, browses the web, and iterates autonomously until a complex task is complete.</p>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:8px">
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(248,113,113,0.15);color:#f87171;font-weight:700">Agents</span>
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(248,113,113,0.15);color:#f87171;font-weight:700">LLM</span>
+            <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(248,113,113,0.15);color:#f87171;font-weight:700">Tools</span>
           </div>
         </div>
       </div>
@@ -507,8 +867,8 @@ Let's think step by step.</div>
 <!-- ═══════ CTA ═══════ -->
 <section class="learn-cta">
   <div class="learn-cta-inner">
-    <h2>You know the full AI landscape.</h2>
-    <p>From neurons to agents — test what you've learned with the AI Mastery Quiz.</p>
+    <h2>You know the complete AI picture.</h2>
+    <p>From neurons to governance — test what you've learned with the AI Mastery Quiz.</p>
     <div class="learn-cta-btns">
       <a href="ai.html" class="btn-learn primary" style="padding:14px 32px;font-size:1rem;border-radius:12px">🎮 Take the AI Quiz</a>
       <a href="index.html" class="btn-learn ghost" style="padding:14px 24px;font-size:1rem;border-radius:12px">← All Tracks</a>
@@ -527,5 +887,81 @@ Let's think step by step.</div>
 
 <script src="learn.js"></script>
 <script src="learn-ai.js"></script>
+
+<!-- Chapter nav & section navigator logic -->
+<script>
+(function () {
+  const CHAPTER_MAP = {
+    s1:0,s2:0,s3:0,s4:0,s5:0,s6:0,
+    s7:1,s8:1,s9:1,s10:1,s11:1,s12:1,s13:1,
+    s14:2,s15:2,s16:2,
+    s17:3,s18:3,s19:3,s20:3
+  };
+  const SECTION_ORDER = ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12','s13','s14','s15','s16','s17','s18','s19','s20'];
+  const TOTAL = SECTION_ORDER.length;
+
+  const tabs       = document.querySelectorAll('.ch-tab');
+  const snavItems  = document.querySelectorAll('.snav-item[href^="#s"]');
+  const pill       = document.getElementById('chProgressPill');
+
+  let currentChapter = 0;
+
+  const secObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const id = e.target.id;
+      const chIdx = CHAPTER_MAP[id];
+      const secIdx = SECTION_ORDER.indexOf(id);
+      if (chIdx === undefined) return;
+
+      if (chIdx !== currentChapter) {
+        currentChapter = chIdx;
+        tabs.forEach((t, i) => t.classList.toggle('active', i === chIdx));
+      }
+
+      snavItems.forEach(item => {
+        item.classList.toggle('active', item.getAttribute('href') === '#' + id);
+      });
+
+      if (pill && secIdx >= 0) pill.textContent = (secIdx + 1) + ' / ' + TOTAL;
+    });
+  }, { threshold: 0.35, rootMargin: '-60px 0px -30% 0px' });
+
+  SECTION_ORDER.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) secObs.observe(el);
+  });
+
+  /* Chapter tab clicks → scroll to chapter intro */
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.getElementById(['ch0','ch1','ch2','ch3'][i]);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  /* Section nav toggle */
+  const toggle  = document.getElementById('snavToggle');
+  const snavEl  = document.getElementById('sectionNav');
+  if (toggle && snavEl) {
+    toggle.addEventListener('click', () => snavEl.classList.toggle('open'));
+    document.addEventListener('click', e => {
+      if (!snavEl.contains(e.target)) snavEl.classList.remove('open');
+    });
+  }
+
+  /* Smooth scroll for all snav-item links */
+  snavItems.forEach(item => {
+    item.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(item.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      snavEl && snavEl.classList.remove('open');
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
